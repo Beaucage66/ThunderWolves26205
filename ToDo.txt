@@ -9,3 +9,5 @@ Road Runner
 Maddie's to do
 --------------------
 Learn April Tags
+Install Android Studio
+Off-Line Editing of Block Programs
