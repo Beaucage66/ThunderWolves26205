@@ -1,11 +1,12 @@
 <xml xmlns="https://developers.google.com/blockly/xml">
 <variables>
+<variable id="7Wf=/p+Ox}kGr.[GOYPB">Arm1</variable>
 <variable id="yu4s+yS9sY9Ed-Zma//}">Limit1</variable>
 <variable id="yqz]qy4I{uh88Wmy:kLo">Button</variable>
-<variable id="7Wf=/p+Ox}kGr.[GOYPB">Arm1</variable>
 <variable id="4%jrZRh.*Mk6!44p!Q^e">RServo</variable>
 <variable id="_/sRCEt0=rwUOgLEb0so">LServo</variable>
-<variable id="JF0Y#D+(Y@X-*blYU.;{">Servo1</variable>
+<variable id="Rzt~F$h2@.zfHTbyAWv:">LiftArm</variable>
+<variable id="Sjpe6I!85?.]J;dp;KL_">Extender</variable>
 <variable id="O7eg]Z5)%V%I,t`O3#Y9">T</variable>
 <variable id="DXa/7p4;d4cOq4=ozjU:">X</variable>
 <variable id="QZJlS(rh[#6vhC:u/Q9v">FL</variable>
@@ -71,10 +72,18 @@ Stopped).</comment>
 </block>
 </value>
 <next>
-<block type="variables_set" id="NG.?h^5og#*AnBUeFca`">
-<field name="VAR" id="JF0Y#D+(Y@X-*blYU.;{">Servo1</field>
+<block type="variables_set" id="LT]t|eXkU@L{`1FDZ8t~">
+<field name="VAR" id="Rzt~F$h2@.zfHTbyAWv:">LiftArm</field>
 <value name="VALUE">
 <block type="math_number" id="-YNsVSyabYgbVzfVdm.$">
+<field name="NUM">0</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="8?;krj%(HI,-4R,X0USr">
+<field name="VAR" id="Sjpe6I!85?.]J;dp;KL_">Extender</field>
+<value name="VALUE">
+<block type="math_number" id="d7|0Ab@JB@}$1a$5t%pC">
 <field name="NUM">0</field>
 </block>
 </value>
@@ -197,65 +206,23 @@ Stopped).</comment>
 </block>
 </value>
 <next>
-<block type="variables_set" id="sqS`5Wt,AELxZe+:z0Cb">
-<field name="VAR" id="JF0Y#D+(Y@X-*blYU.;{">Servo1</field>
+<block type="variables_set" id="W2Z?b^$boL+.7he45gg@">
+<field name="VAR" id="Rzt~F$h2@.zfHTbyAWv:">LiftArm</field>
 <value name="VALUE">
-<block type="math_arithmetic" id="RRhS0;wg31D?;$r7=!OF">
-<field name="OP">ADD</field>
-<value name="A">
-<shadow type="math_number" id="d9`H;dH%qF`iEP[4AA{B">
-<field name="NUM">1</field>
-</shadow>
-<block type="math_arithmetic" id="tn0u~:[fRC5[S(UZ[#7q">
-<field name="OP">DIVIDE</field>
-<value name="A">
-<shadow type="math_number" id="BUAQJ%!ORY@=)3OuTvn)">
-<field name="NUM">1</field>
-</shadow>
-<block type="math_single" id="_HgxJCjY1firkIY5RLKj">
-<field name="OP">NEG</field>
-<value name="NUM">
-<shadow type="math_number" id="+1H?i$3Ov/+iZ$}`sFXE">
-<field name="NUM">9</field>
-</shadow>
-<block type="gamepad_getProperty_Number" id="%KhkR4VM$I~-:_yI.z]A">
-<field name="IDENTIFIER">gamepad2</field>
-<field name="PROP">RightStickY</field>
-<data>{"IDENTIFIER":"gamepad2"}</data>
-</block>
-</value>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number" id="K=^CqC9cp37tn:Hsjpwj">
-<field name="NUM">2</field>
-</shadow>
-</value>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number" id="6ES{6U%Yf5crm_+cXb$)">
-<field name="NUM">0.5</field>
-</shadow>
-</value>
-</block>
-</value>
-<next>
-<block type="variables_set" id="iWwef^k)bvsAM1--]2O:">
-<field name="VAR" id="7Wf=/p+Ox}kGr.[GOYPB">Arm1</field>
-<value name="VALUE">
-<block type="math_single" id="%3X]6[*=K/`v5c*3^-8.">
-<field name="OP">NEG</field>
-<value name="NUM">
-<shadow type="math_number" id="PtY4+X@`,{#6`sqMO/io">
-<field name="NUM">9</field>
-</shadow>
 <block type="gamepad_getProperty_Number" id="g*qZ%$lzlq-1a(a+Kiuz">
 <field name="IDENTIFIER">gamepad2</field>
 <field name="PROP">LeftStickY</field>
 <data>{"IDENTIFIER":"gamepad2"}</data>
 </block>
 </value>
+<next>
+<block type="variables_set" id="ku7dRIgzvj._]g0_[aQI">
+<field name="VAR" id="Sjpe6I!85?.]J;dp;KL_">Extender</field>
+<value name="VALUE">
+<block type="gamepad_getProperty_Number" id="68`s}JaTaz;2+le#G^fO">
+<field name="IDENTIFIER">gamepad2</field>
+<field name="PROP">LeftStickX</field>
+<data>{"IDENTIFIER":"gamepad2"}</data>
 </block>
 </value>
 <next>
@@ -316,36 +283,6 @@ Stopped).</comment>
 </next>
 </block>
 </statement>
-<next>
-<block type="telemetry_addNumericData_Number" id="#*}hod.5aRM:KksV?@rh">
-<value name="KEY">
-<shadow type="text" id=";Op?40#El=UEg]F9p`[e">
-<field name="TEXT">RServo</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number" id="(p{?)uD|2b`N7e:`e@2X">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="Jmf|CC3%LcJDqx3];s)w">
-<field name="VAR" id="4%jrZRh.*Mk6!44p!Q^e">RServo</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="AzDQ9,Ky6XQmswKJ?wqD">
-<value name="KEY">
-<shadow type="text" id="[$tBim,+qP91?a2;BoX+">
-<field name="TEXT">LServo</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number" id="I.?a|=bKeNaeP]N.xh43">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="B5gOqP]|kRi4qFk%?17.">
-<field name="VAR" id="_/sRCEt0=rwUOgLEb0so">LServo</field>
-</block>
-</value>
 <next>
 <block type="controls_if" id="?2BPRCQaw*=*pc~Sl^aI">
 <mutation else="1"/>
@@ -961,6 +898,62 @@ Stopped).</comment>
 </block>
 </value>
 <next>
+<block type="dcMotor_setProperty_Number" id="UstNr[}jN0PU_iPQUZK1">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="LdoZzB;uH}eQ4a8Iy}zQ">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="^DcB8Jk@b)Kcmc-gsF-C">
+<field name="VAR" id="Rzt~F$h2@.zfHTbyAWv:">LiftArm</field>
+</block>
+</value>
+<next>
+<block type="dcMotor_setProperty_Number" id="gv6H)iw:Jwo0,p**?|p5">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="+WyT*CP/Jo6GHo:_~Gs=">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="+T{n_KR9qRf-Z~Z29PP!">
+<field name="VAR" id="Sjpe6I!85?.]J;dp;KL_">Extender</field>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="5?,xBs/n4Udu?umv+DLM">
+<value name="KEY">
+<shadow type="text" id="(CzbBQB/fde0mSp1USJ[">
+<field name="TEXT">LiftArm</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number" id="9m;?P%G6Ncz|lu9t%+bp">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="%Lm$l28n;.YaQM,wr+qb">
+<field name="VAR" id="Rzt~F$h2@.zfHTbyAWv:">LiftArm</field>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="i~ROPYW48my.QW2Xiy7,">
+<value name="KEY">
+<shadow type="text" id="ncdf,sh)o_Ou_ND,yo7g">
+<field name="TEXT">Extender</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="mDhBM%H0Ux.R;|U+Ysix">
+<field name="VAR" id="Sjpe6I!85?.]J;dp;KL_">Extender</field>
+</block>
+</value>
+<next>
 <block type="telemetry_addNumericData_Number" id="rWHeGyqsY!490|z2yUsE">
 <value name="KEY">
 <shadow type="text" id="t.r:#_%|]sUC{NQP37:Q">
@@ -1119,66 +1112,6 @@ Stopped).</comment>
 </block>
 </value>
 <next>
-<block type="telemetry_addNumericData_Number" id="1%$!g!o[*nSLU!h2GDDj">
-<value name="KEY">
-<shadow type="text" id="3qqzaQ-N(sSNoQC%M[W5">
-<field name="TEXT">Servo1</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number" id="85[?}IEAC(f3?nuEQnMl">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="H(Iv4keF|u8Z%DG|C?mu">
-<field name="VAR" id="JF0Y#D+(Y@X-*blYU.;{">Servo1</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="~)~H@:Y1;xEm,9]kvZWm">
-<value name="KEY">
-<shadow type="text" id="D!b5NN]NCKxa(`3%lT^/">
-<field name="TEXT">Arm</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number" id="tFI{6TP:9||7L36DB%UV">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="8k[F5Hu,o;D|xQ#1=ThC">
-<field name="VAR" id="7Wf=/p+Ox}kGr.[GOYPB">Arm1</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="7zC?inRrnuI{9T%kDe_w">
-<value name="KEY">
-<shadow type="text" id="e)eP0:M6aK`fN$}sHw-%">
-<field name="TEXT">Button</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number" id="YZuh|u`AP7UU-GI=)F}g">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="h5+bZ`fJaR!rC(TOwwk_">
-<field name="VAR" id="yqz]qy4I{uh88Wmy:kLo">Button</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="Yvw%/?7.9ED4Yn)vO;k4">
-<value name="KEY">
-<shadow type="text" id="bKS](95w:)Af[3T.o],L">
-<field name="TEXT">Limit1</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number" id="iFC_@PKvBVU0Y({}Ut*t">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="CzkGh3N`g]L)80xX*y+u">
-<field name="VAR" id="yu4s+yS9sY9Ed-Zma//}">Limit1</field>
-</block>
-</value>
-<next>
 <block type="telemetry_update" id="exvivmft-pX$n!1,8Ea$"/>
 </next>
 </block>
@@ -1254,10 +1187,6 @@ Stopped).</comment>
 </block>
 </next>
 </block>
-</next>
-</block>
-</next>
-</block>
 </statement>
 </block>
 </next>
@@ -1296,7 +1225,30 @@ Stopped).</comment>
 </block>
 </next>
 </block>
+</next>
+</block>
 </statement>
+</block>
+<block type="variables_set" id=";_~70Suy:k8vQE:{MZ%;" x="240" y="1009">
+<field name="VAR" id="7Wf=/p+Ox}kGr.[GOYPB">Arm1</field>
+</block>
+<block type="variables_set" id="^4%a%A5)aWEbmI4P`V:V" x="268" y="1065">
+<field name="VAR" id="7Wf=/p+Ox}kGr.[GOYPB">Arm1</field>
+<value name="VALUE">
+<block type="math_single" id="55n;G3Uo:).(%7Pqdj{6">
+<field name="OP">NEG</field>
+<value name="NUM">
+<shadow type="math_number">
+<field name="NUM">9</field>
+</shadow>
+<block type="gamepad_getProperty_Number" id="g2t@b[pX!a)PJP%L{*8m">
+<field name="IDENTIFIER">gamepad2</field>
+<field name="PROP">LeftStickY</field>
+<data>{"IDENTIFIER":"gamepad2"}</data>
+</block>
+</value>
+</block>
+</value>
 </block>
 </xml>
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
