@@ -1,0 +1,16 @@
+Team Bot
+
+Motors		Main	Ext Hub
+FL			#0
+FR			#1
+BL			#2
+BR			#3
+
+LiftArm		#1?
+Extender	#0?
+
+
+Buttons
+LiftArmLimit	#0-1  (Zero item)
+ExtenderLimit	
+
