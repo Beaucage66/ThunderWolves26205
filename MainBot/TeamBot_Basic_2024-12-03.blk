@@ -162,6 +162,26 @@ Stopped).</comment>
 </block>
 </value>
 <next>
+<block type="dcMotor_setProperty_ZeroPowerBehavior" id="oVo[jOurKA?T}4N+EU^B">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">ZeroPowerBehavior</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_zeroPowerBehavior" id=";%nYSd:Ll/vlpuQx#r9.">
+<field name="ZERO_POWER_BEHAVIOR">BRAKE</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_ZeroPowerBehavior" id="|XR[j.g]h}G2n%Dt7j:w">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">ZeroPowerBehavior</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_zeroPowerBehavior" id="YB!0I3!s^flEgmC=(w[|">
+<field name="ZERO_POWER_BEHAVIOR">BRAKE</field>
+</shadow>
+</value>
+<next>
 <block type="servo_setProperty_Number" id="w$7u.%`3dJVp./_[D}4!">
 <field name="IDENTIFIER">LServoAsServo</field>
 <field name="PROP">Position</field>
@@ -205,7 +225,7 @@ Stopped).</comment>
 </value>
 <statement name="DO0">
 <block type="comment" id="sjMSNsX=FSzxX*slr),C">
-<field name="COMMENT">//Set Extender power to -0.1</field>
+<field name="COMMENT">//Set Extender power to -0.25</field>
 <next>
 <block type="dcMotor_setProperty_Number" id="uK_m:S{(*x5LHdnLTW8=">
 <field name="IDENTIFIER">ExtenderAsDcMotor</field>
@@ -297,7 +317,7 @@ Stopped).</comment>
 </value>
 <statement name="DO0">
 <block type="comment" id="hO8l;S)uJ6.:L0Y-52I8">
-<field name="COMMENT">//Set LiftArm power to -0.1</field>
+<field name="COMMENT">//Set LiftArm power to 0.25</field>
 <next>
 <block type="dcMotor_setProperty_Number" id="uy:IBugAFL*K7sx_9w@s">
 <field name="IDENTIFIER">LiftArmAsDcMotor</field>
@@ -305,7 +325,7 @@ Stopped).</comment>
 <data>{"IDENTIFIER":"LiftArm"}</data>
 <value name="VALUE">
 <shadow type="math_number" id="WKJ/LWCrtn2W!!~i+uG5">
-<field name="NUM">0.2</field>
+<field name="NUM">0.25</field>
 </shadow>
 </value>
 <next>
@@ -415,6 +435,21 @@ Stopped).</comment>
 </shadow>
 <block type="variables_get" id="rMQo1bnA={jO[J^0-Z]P">
 <field name="VAR" id="T}aEwS1]CeJ*3jIM#wK7">LiftArmPosition</field>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="}S%(6grk*jv*~T/m~]N~">
+<value name="KEY">
+<shadow type="text" id="RJ_o5XjRW1/|YO8H^0,,">
+<field name="TEXT">LiftArmLimit</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="NH)k`+R,tUW:{m6_nv,z">
+<field name="VAR" id="zlo1@9fgdJaMnefXxrRx">LiftArmLimitVal</field>
 </block>
 </value>
 <next>
@@ -730,6 +765,9 @@ Stopped).</comment>
 </block>
 </statement>
 <next>
+<block type="comment" id="E?7$d~vjVyHWBxz//X,q">
+<field name="COMMENT">Is X  Drop liftArn to-400</field>
+<next>
 <block type="controls_if" id="{zt:H=F-Cm$W[`3;+pkI">
 <value name="IF0">
 <block type="gamepad_getProperty_Boolean" id="915pZX_QK1n_@64P#~?D">
@@ -739,6 +777,61 @@ Stopped).</comment>
 </block>
 </value>
 <statement name="DO0">
+<block type="comment" id="I|}=9Iv(N)Ssd#~f/`RH">
+<field name="COMMENT">Close hand</field>
+<next>
+<block type="variables_set" id="^%rO!a2,Cg!U7#cStLKL">
+<field name="VAR" id="_/sRCEt0=rwUOgLEb0so">LServo</field>
+<value name="VALUE">
+<block type="math_number" id="%6,;+`s6W6H0Q@s0Z(0a">
+<field name="NUM">0.5</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="ZSu4;_=b+Js96RGrGmlV">
+<field name="VAR" id="4%jrZRh.*Mk6!44p!Q^e">RServo</field>
+<value name="VALUE">
+<block type="math_number" id="Z]H5?HE|n9/t}Qxx_1oy">
+<field name="NUM">1</field>
+</block>
+</value>
+<next>
+<block type="servo_setProperty_Number" id="`{$93AWh!Gv^n~=YAt8j">
+<field name="IDENTIFIER">LServoAsServo</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"LServo"}</data>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+<block type="variables_get" id="z_Tvqe/LIAa5UeUg=hS$">
+<field name="VAR" id="_/sRCEt0=rwUOgLEb0so">LServo</field>
+</block>
+</value>
+<next>
+<block type="servo_setProperty_Number" id="@kL,M:}17%c=Y+2FkK|Z">
+<field name="IDENTIFIER">RServoAsServo</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"RServo"}</data>
+<value name="VALUE">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+<block type="variables_get" id="Gi~?5!,gM)em7zhP7eO;">
+<field name="VAR" id="4%jrZRh.*Mk6!44p!Q^e">RServo</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="Qn;W*:;Z!94F(K%?)|vC">
+<field name="VAR" id="1*)^~$CU2dhyf/FR8#)w">ExtenderPosition</field>
+<value name="VALUE">
+<block type="dcMotor_getProperty_Number" id="%`-^Xqz)#Z8x$O!]K7Kp">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+</block>
+</value>
+<next>
 <block type="controls_if" id="LFVGHyj)aMt*Ke*M8V1/">
 <value name="IF0">
 <block type="logic_negate" id="Ce9V*F@eRhztv6U_ngH@">
@@ -796,30 +889,6 @@ Stopped).</comment>
 <field name="NUM">0</field>
 </shadow>
 </value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="1kt+Bt)Y,vND?K:u#QYR">
-<field name="IDENTIFIER">ExtenderAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"Extender"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="67Plac=FWJ5v(-7!QLDC">
-<field name="RUN_MODE">RUN_USING_ENCODER</field>
-</shadow>
-</value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="m36s1uJ%8OpLeBNHygIH">
-<field name="IDENTIFIER">ExtenderAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"Extender"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="VG?;NBBmS{0aL3|T:#m|">
-<field name="RUN_MODE">STOP_AND_RESET_ENCODER</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
 </block>
 </next>
 </block>
@@ -831,12 +900,30 @@ Stopped).</comment>
 </block>
 </statement>
 <next>
+<block type="variables_set" id="[kGB}EOJ8lIL^OTYZ3(M">
+<field name="VAR" id="T}aEwS1]CeJ*3jIM#wK7">LiftArmPosition</field>
+<value name="VALUE">
+<block type="dcMotor_getProperty_Number" id="YjW0v(tu`GfNW6,tqiWJ">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
+<next>
 <block type="controls_if" id="SujBk6dV!WBd=FgS941-">
 <value name="IF0">
-<block type="digitalChannel_getProperty_Boolean" id="JrRF]!d0S-;V)1).PH5.">
-<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
-<field name="PROP">State</field>
-<data>{"IDENTIFIER":"LiftArmLimit"}</data>
+<block type="logic_compare" id="@dD#Y]nCiAr.FV}bNy||">
+<field name="OP">LT</field>
+<value name="A">
+<block type="variables_get" id="j3weKr9]R{*X(/b3|{2!">
+<field name="VAR" id="T}aEwS1]CeJ*3jIM#wK7">LiftArmPosition</field>
+</block>
+</value>
+<value name="B">
+<block type="math_number" id="xE.?xfsh]r]h$UGo^M{1">
+<field name="NUM">-370</field>
+</block>
+</value>
 </block>
 </value>
 <statement name="DO0">
@@ -849,25 +936,40 @@ Stopped).</comment>
 <data>{"IDENTIFIER":"LiftArm"}</data>
 <value name="VALUE">
 <shadow type="math_number" id="ZYz*`R4ffb0Ab)YSj/J}">
-<field name="NUM">0.65</field>
+<field name="NUM">0.45</field>
 </shadow>
 </value>
 <next>
 <block type="comment" id="Yxj3?O+Ps+(/42e.0Vmu">
 <field name="COMMENT">//While ! LiftArm.IsPress {}</field>
 <next>
-<block type="controls_whileUntil" id="nnXDw`2qkHLAu$9g#F_`">
+<block type="controls_whileUntil" id="S$Hv~y-jj_a^/Q1PdDIH">
 <field name="MODE">WHILE</field>
 <value name="BOOL">
-<block type="digitalChannel_getProperty_Boolean" id="7-@h|FQz(_dN`ZUt(ss$">
-<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
-<field name="PROP">State</field>
-<data>{"IDENTIFIER":"LiftArmLimit"}</data>
+<block type="logic_compare" id="id806_]{4}11!CnfD:f$">
+<field name="OP">LT</field>
+<value name="A">
+<block type="variables_get" id="jc4?sLW;Wj)s$c$`sd?^">
+<field name="VAR" id="T}aEwS1]CeJ*3jIM#wK7">LiftArmPosition</field>
+</block>
+</value>
+<value name="B">
+<block type="math_number" id="#*rSIb+l!i[Pl{vB]3*-">
+<field name="NUM">-370</field>
+</block>
+</value>
 </block>
 </value>
 <statement name="DO">
-<block type="comment" id="O=|2Ei~bHmP,8[M/A_PE">
-<field name="COMMENT">//Do nothing</field>
+<block type="variables_set" id="!s,6P]4ZWr[o}gfwajOg">
+<field name="VAR" id="T}aEwS1]CeJ*3jIM#wK7">LiftArmPosition</field>
+<value name="VALUE">
+<block type="dcMotor_getProperty_Number" id="cUa5LeQtE4y7}f:8Hlqc">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
 </block>
 </statement>
 <next>
@@ -880,30 +982,6 @@ Stopped).</comment>
 <field name="NUM">0</field>
 </shadow>
 </value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="oaTSgN:{G_S(:v0_q+9r">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="9@Ka#8^Yil#9}?0X!::H">
-<field name="RUN_MODE">STOP_AND_RESET_ENCODER</field>
-</shadow>
-</value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="N+V3X9+JMIu|t`5W.w2=">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="eO0_.3Lh2xh0|?1z;Xir">
-<field name="RUN_MODE">RUN_USING_ENCODER</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
 </block>
 </next>
 </block>
@@ -935,57 +1013,31 @@ Stopped).</comment>
 </block>
 </value>
 <next>
-<block type="dcMotor_setProperty_Number" id="m!Tg}L4$r~eea34+(u.N">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">TargetPosition</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="IGKZO!-~qzu]uU?g=)bB">
-<field name="NUM">-184</field>
+<block type="telemetry_addNumericData_Number" id="TQZ827rq?uX|qihD|`,u">
+<value name="KEY">
+<shadow type="text" id="iz(5v]k{SnEjRS;?m_ms">
+<field name="TEXT">LiftArmPosition</field>
 </shadow>
 </value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="at0fSPm1YtEgcRkcW)=H">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="LcY^39cu-X6B1Y!1qAKP">
-<field name="RUN_MODE">RUN_TO_POSITION</field>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
 </shadow>
+<block type="variables_get" id=")}O}Bs:=mwJ$4Mu=5E|0">
+<field name="VAR" id="T}aEwS1]CeJ*3jIM#wK7">LiftArmPosition</field>
+</block>
 </value>
 <next>
-<block type="dcMotor_setProperty_Number" id="v[fjwn:lP/Ugxi,rpmzQ">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="~no,D?Nn/Zax4+DLbv9(">
-<field name="NUM">-0.1</field>
-</shadow>
-</value>
-<next>
-<block type="controls_whileUntil" id="==G=N.*pp[SV1(4zY$}H">
-<field name="MODE">WHILE</field>
-<value name="BOOL">
-<block type="logic_operation" id=":??q:3vdZ5c`+:.c;X]+">
-<field name="OP">AND</field>
-<value name="A">
-<block type="linearOpMode_opModeIsActive" id="!I$Yn0-Q){dm8@A.AM-0"/>
-</value>
-<value name="B">
-<block type="dcMotor_isBusy" id="*;@c;INy%Ay8U+k9{fCX">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
+<block type="telemetry_update" id="RTm*P]k}fGH|wm+]3o+^"/>
+</next>
 </block>
-</value>
+</next>
 </block>
-</value>
-<statement name="DO">
-<block type="comment" id="R(%8mP!wi4E}xn#mBZ{/">
-<field name="COMMENT">//Do nothing</field>
+</next>
 </block>
-</statement>
+</next>
+</block>
+</next>
 </block>
 </next>
 </block>
@@ -1002,6 +1054,26 @@ Stopped).</comment>
 </next>
 </block>
 </statement>
+<next>
+<block type="variables_set" id="TxFNR+)+eltjs)2B_isL">
+<field name="VAR" id="1*)^~$CU2dhyf/FR8#)w">ExtenderPosition</field>
+<value name="VALUE">
+<block type="dcMotor_getProperty_Number" id="Wth]okZvrkk*0i*%L0|c">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+</block>
+</value>
+<next>
+<block type="variables_set" id="9s|u|DpNno-,O:8Sgm]p">
+<field name="VAR" id="T}aEwS1]CeJ*3jIM#wK7">LiftArmPosition</field>
+<value name="VALUE">
+<block type="dcMotor_getProperty_Number" id=";ZQ)Szao7bz!]ZXe^K?8">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
 <next>
 <block type="controls_if" id="+sF}Uh=0W,G0R|#Z:OYJ">
 <value name="IF0">
@@ -1203,10 +1275,14 @@ Stopped).</comment>
 <block type="logic_operation" id="s4[UbQ*/kuLRdAu##q;J">
 <field name="OP">OR</field>
 <value name="A">
-<block type="touchSensor_getProperty_Boolean" id="JO6JQ%[p[YxJG;/h6hg=">
-<field name="IDENTIFIER">ExtenderLimit1AsTouchSensor</field>
-<field name="PROP">IsPressed</field>
-<data>{"IDENTIFIER":"ExtenderLimit1"}</data>
+<block type="logic_negate" id="+8d}FQp(zpK9]TTF!ggx">
+<value name="BOOL">
+<block type="digitalChannel_getProperty_Boolean" id=";tnfGy5/;p2X[ddA$~1G">
+<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
+<field name="PROP">State</field>
+<data>{"IDENTIFIER":"LiftArmLimit"}</data>
+</block>
+</value>
 </block>
 </value>
 <value name="B">
@@ -2044,78 +2120,6 @@ Stopped).</comment>
 </block>
 </next>
 </block>
-</statement>
-</block>
-</next>
-</block>
-</statement>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
 </next>
 </block>
 </next>
@@ -2124,25 +2128,89 @@ Stopped).</comment>
 </block>
 </statement>
 </block>
-<block type="dcMotor_setProperty_Number" id="0Y@1KjYt}S?}gdQ1J*yg" x="300" y="1612">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="F|`MY6/]NFln9.@bbDw3">
-<field name="NUM">0</field>
-</shadow>
-</value>
+</next>
 </block>
-<block type="dcMotor_setProperty_Number" id="rxP%d=]b=g6Z@}-PH3-l" x="407" y="2919">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="/M=gk*_r];ihP8bOe{[I">
-<field name="NUM">0</field>
-</shadow>
-</value>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
 </block>
 </xml>
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
