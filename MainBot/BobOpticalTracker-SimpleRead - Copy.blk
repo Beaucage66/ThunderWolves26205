@@ -1,0 +1,168 @@
+<xml xmlns="https://developers.google.com/blockly/xml">
+<variables>
+<variable id="lXdb{;nDotAr0zTz^2_.">myPose</variable>
+<variable id="3G:Mc/U5E7a07%{D($*{">Results</variable>
+</variables>
+<block type="procedures_defnoreturn" id="WtpyD@tEu+EoY=P9iY,D" deletable="false" x="25" y="169">
+<field name="NAME">runOpMode</field>
+<comment pinned="false" h="141" w="577">This sample contains the bare minimum Blocks for any regular OpMode. The 3 blue
+Comment Blocks show where to place Initialization code (runs once, after touching the
+DS INIT button, and before touching the DS Start arrow), Run code (runs once, after
+touching Start), and Loop code (runs repeatedly while the OpMode is active, namely not
+Stopped).</comment>
+<data>{"commentPositionLeft":-20,"commentPositionTop":-169}</data>
+<statement name="STACK">
+<block type="comment" id="Lc#BFtj*NTB48YL;eBl.">
+<field name="COMMENT">Put initialization blocks here.</field>
+<next>
+<block type="sparkFunOTOS_calibrateImu" id="ST0di3|C,aLHnXzTQ9F$">
+<mutation has_output="false"/>
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<next>
+<block type="sparkFunOTOS_resetTracking" id="--Q:L?Tm8cC|e}]6k_mv">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<next>
+<block type="linearOpMode_waitForStart" id=":`$wN_ci`O;o6P0~.(+g">
+<next>
+<block type="controls_if" id="}Q?5mbxSO8Di;i!__6[y">
+<value name="IF0">
+<block type="linearOpMode_opModeIsActive" id=")o%YFX/#9kvv^sgXr4~5"/>
+</value>
+<statement name="DO0">
+<block type="comment" id="(rU-p_T_/B|vExcs}liL">
+<field name="COMMENT">Put run blocks here.</field>
+<next>
+<block type="controls_whileUntil" id="^0Kagy/e+Ea{rbZPv2G6">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="linearOpMode_opModeIsActive" id="e)cr{!2VIET83s,JWC.="/>
+</value>
+<statement name="DO">
+<block type="comment" id="Jh/;L$n@JuX8AQJDFCul">
+<field name="COMMENT">Put loop blocks here.</field>
+<next>
+<block type="variables_set" id="nt]r02P7Em,M.@J6sN2{">
+<field name="VAR" id="lXdb{;nDotAr0zTz^2_.">myPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id=")W~w.H,MFBOi/5T)Ato3">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id=")g1oe.2~;?(,oBj^XW!N">
+<value name="KEY">
+<shadow type="text" id=")sM$YJH/B;}h0Y|kko[C">
+<field name="TEXT">Results</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number" id="i!~*a?aG_v]iRo;A6o{j">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="Q;rThy$:rX1(z9@4R=o1">
+<field name="VAR" id="3G:Mc/U5E7a07%{D($*{">Results</field>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="|X/i1SFBPM7)i^?4?/3[">
+<value name="KEY">
+<shadow type="text" id="gx7CftQ)_c20kl1fnw2q">
+<field name="TEXT">myPoseX</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="[p|u$e}q)VabNo,)T5_y">
+<field name="PROP">x</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="HQi_Siu=eQp:Vds1wG{M">
+<field name="VAR" id="lXdb{;nDotAr0zTz^2_.">myPose</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="_Q22_Pz%NQZvz)#~*qKl">
+<value name="KEY">
+<shadow type="text" id="A1}r0P[p=OU~/}D%nt=(">
+<field name="TEXT">myPoseY</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="L29i?i+.UfLxi][tsrT|">
+<field name="PROP">y</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="skOsWzE-i1h`w7ih;W~`">
+<field name="VAR" id="lXdb{;nDotAr0zTz^2_.">myPose</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="@AcK^_fjqu^.|Tin*~#y">
+<value name="KEY">
+<shadow type="text" id="YHDbz+}}~pqsIneBMwcd">
+<field name="TEXT">myPoseH</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="E0g[KPYKVu{Z;2m}_axj">
+<field name="PROP">h</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="eoB7Zv7^^3qU;t7N-Ta%">
+<field name="VAR" id="lXdb{;nDotAr0zTz^2_.">myPose</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="telemetry_update" id="exvivmft-pX$n!1,8Ea$"/>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</xml>
+<?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
+<Extra>
+<OpModeMeta flavor="TELEOP" group="" autoTransition="" />
+<Enabled value="true" />
+</Extra>
