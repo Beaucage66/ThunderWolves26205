@@ -684,6 +684,59 @@ Stopped).</comment>
 </block>
 </statement>
 <next>
+<block type="controls_if" id="-1xM^JneW6oFq!%@%82V">
+<value name="IF0">
+<block type="gamepad_getProperty_Boolean" id="?]H9BC~r#vwNQxa5Ki6?">
+<field name="IDENTIFIER">gamepad2</field>
+<field name="PROP">A</field>
+<data>{"IDENTIFIER":"gamepad2"}</data>
+</block>
+</value>
+<statement name="DO0">
+<block type="variables_set" id="Tb1-;vO~ZtZJiOp#tjB=">
+<field name="VAR" id="1axdz?gcQwUeU`;[lEYs">RestArmState</field>
+<value name="VALUE">
+<block type="math_number" id="]J`rNu/0bueeazm8z?74">
+<field name="NUM">0</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="%N9H)1wdQ!$y{()U=d%8">
+<field name="VAR" id="|/.]w$=-/,B,i1Jx$4!L">SampleArmState</field>
+<value name="VALUE">
+<block type="math_number" id="EU%l00L7dBVv}pp]@K._">
+<field name="NUM">0</field>
+</block>
+</value>
+<next>
+<block type="dcMotor_setProperty_Number" id="hGe00oUhRWNHqLR6%|[a">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="=OJ%09:}lB(z(:!}wdQA">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_Number" id="4YUf?Fe-U8jh`b9,vBec">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="u?nRSS%.Hcipf`?%_h$l">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
 <block type="controls_if" id="^D1^194,*yJ@l;dN5w*P">
 <value name="IF0">
 <block type="logic_compare" id="N*dJ0=:0MFD)q^QwDsG+">
@@ -730,6 +783,8 @@ Stopped).</comment>
 <next>
 <block type="procedures_callnoreturn" id="2/r{^M/~I~DGzP3SE9C@">
 <mutation name="MainOutputData"/>
+</block>
+</next>
 </block>
 </next>
 </block>
@@ -1001,7 +1056,7 @@ Stopped).</comment>
 <data>{"IDENTIFIER":"LiftArm"}</data>
 <value name="VALUE">
 <shadow type="math_number" id="VDf~z$B6*4!uO|ZI55~W">
-<field name="NUM">-0.5</field>
+<field name="NUM">-0.75</field>
 </shadow>
 </value>
 </block>
@@ -1121,7 +1176,7 @@ Stopped).</comment>
 <data>{"IDENTIFIER":"Extender"}</data>
 <value name="VALUE">
 <shadow type="math_number" id="dhpkM@s~w/[r.xfEn#c7">
-<field name="NUM">0.5</field>
+<field name="NUM">0.75</field>
 </shadow>
 </value>
 <next>
