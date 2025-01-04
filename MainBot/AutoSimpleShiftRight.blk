@@ -2,307 +2,25 @@
 <variables>
 <variable id="(WKmO%Y%5@KgP9DoLdGk">speed</variable>
 <variable id="B$4{g|Fj?KESK_kTgVPB">inches</variable>
+<variable id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</variable>
 <variable id="VTSq0g{US8u#dauy%}T]">myPose</variable>
-<variable id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</variable>
-<variable id="8]8Pq=LlSf/]hzmx}W@=">SampleArmPositionHeight</variable>
+<variable id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</variable>
+<variable id=")7Uh^oY=$6S0r|3XgE?*">PickupTravelHeight</variable>
 <variable id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</variable>
+<variable id="8]8Pq=LlSf/]hzmx}W@=">SampleArmPositionHeight</variable>
+<variable id="d(iYx9G.QR?a):J;I-;(">AfterHangHeight</variable>
 <variable id="G-w2{pz#zM0s^#.T~7X@">JawOpen</variable>
 <variable id="Y,?L%WyfA,qkLn{sx^n7">SampleArmExtenderPosition</variable>
-<variable id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</variable>
-<variable id="N9h1OExw}GYk0f/s`|b_">COUNTS_PER_INCH</variable>
 <variable id="[H1nMv+X9VUQkBZhSY6%">COUNTS_PER_MOTOR_REV</variable>
+<variable id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</variable>
 <variable id="W!7Lk:_cjY6/HDiR+(bb">DRIVE_GEAR_REDUCTION</variable>
 <variable id="-UG=1,9[5N_|_v%dDWk{">WHEEL_DIAMETER_INCHES</variable>
+<variable id="N9h1OExw}GYk0f/s`|b_">COUNTS_PER_INCH</variable>
 <variable id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</variable>
 <variable id="b]{QL-UK^Zkhnqn=-h?e">TURN_SPEED</variable>
 <variable id="Q_BUZ!x;F0^P3~jvfXbN">runtime</variable>
 </variables>
-<block type="procedures_defnoreturn" id="WtpyD@tEu+EoY=P9iY,D" deletable="false" x="-241" y="204">
-<field name="NAME">runOpMode</field>
-<comment pinned="false" h="349" w="598">This OpMode illustrates the concept of driving a path based on encoder counts.
-This OpMode requires that you have encoders on the wheels, otherwise you would use RobotAutoDriveByTime.
-This OpMode also requires that the drive Motors have been configured such that a positive power command moves them forward, and causes the encoders to count up.
-
-The desired path in this example is:
-  - Drive forward for 48 inches
-  - Spin right for 12 Inches
-  - Drive backward for 24 inches
-
-This OpMode has a function called encoderDrive that performs the actual movement.
-This function assumes that each movement is relative to the last stopping place.
-There are other ways to perform encoder based moves, but this method is probably the simplest.
-This OpMode uses the RUN_TO_POSITION mode.</comment>
-<data>{"commentPositionLeft":-23,"commentPositionTop":-380}</data>
-<statement name="STACK">
-<block type="procedures_callnoreturn" id=".lfLQAFx_~=;cJnfu0lT">
-<mutation name="InitVars"/>
-<next>
-<block type="sparkFunOTOS_calibrateImu" id="-KC9//4m/W,~+sl;0^xn">
-<mutation has_output="false"/>
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-<next>
-<block type="variables_set" id="5a$BqdrV7F4[q$_/j}TR">
-<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_Pose2D_create_withArgs" id="vE$txZq(W*N3oIz[tBrB">
-<value name="X">
-<shadow type="math_number" id=",.[}w6WkJkEyX|xPz^hj">
-<field name="NUM">2.5</field>
-</shadow>
-</value>
-<value name="Y">
-<shadow type="math_number" id="L/9-T+wPVeIQy3{g;@P)">
-<field name="NUM">6.375</field>
-</shadow>
-</value>
-<value name="H">
-<shadow type="math_number" id="6f+!Qg~_mUGx=TG}Um~v">
-<field name="NUM">0</field>
-</shadow>
-</value>
-</block>
-</value>
-<next>
-<block type="sparkFunOTOS_setProperty_Pose2D" id="qs)Dn,z8O_?p4~r,Ngoa">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Offset</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-<value name="VALUE">
-<block type="variables_get" id="w1^I3u[[gM88~0dFM]6z">
-<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
-</block>
-</value>
-<next>
-<block type="variables_set" id="^(?,H;.-.Wa[3(1lAxzb">
-<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_Pose2D_create_withArgs" id="@:.Z5)@xodjZBz4846g%">
-<value name="X">
-<shadow type="math_number" id="UpCraKNt9RAMdmEE4~X0">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<value name="Y">
-<shadow type="math_number" id="u(FJ*tPAdVJ|Wg^0vG5S">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<value name="H">
-<shadow type="math_number" id="GPyaX25MnG_|R(S+9o[R">
-<field name="NUM">0</field>
-</shadow>
-</value>
-</block>
-</value>
-<next>
-<block type="sparkFunOTOS_setProperty_Pose2D" id="ocA*t5r{0U%Pt0aG$N/W">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Position</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-<value name="VALUE">
-<block type="variables_get" id="T5t`.i^!NegzrT@OO8:H">
-<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
-</block>
-</value>
-<next>
-<block type="sparkFunOTOS_setProperty_Number_ReturnBoolean" id="a}]:baF`_9)X1AF!jI~@">
-<mutation has_output="false"/>
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">LinearScalar</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="C(JkT++_,6i5Mh~6N^rG">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<next>
-<block type="sparkFunOTOS_setProperty_Number_ReturnBoolean" id="GpvHMjadFb%Jdzk]2.Qh">
-<mutation has_output="false"/>
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">AngularScalar</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="eMI_ap#1zA,WWu09tTxK">
-<field name="NUM">1</field>
-</shadow>
-</value>
-<next>
-<block type="sparkFunOTOS_resetTracking" id="(X`uqyynj$OCvFnSHT_U">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-<next>
-<block type="variables_set" id="sYp[kQUPP{Hs+79M4_H/">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_Pose2D_create" id="i|/a=X}0vUbNSD-U,F^S"/>
-</value>
-<next>
-<block type="procedures_callnoreturn" id="-E85!Ks2#Kh0#pCp{U0L">
-<mutation name="OpenClaw"/>
-<next>
-<block type="sparkFunOTOS_begin" id="sWxQ9EVg}u)AG1yQBGc}">
-<mutation has_output="false"/>
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-<next>
-<block type="procedures_callnoreturn" id="/[TlhI=Ug+w,H1V0.%?X">
-<mutation name="DisplayValues"/>
-<next>
-<block type="linearOpMode_waitForStart" id=":`$wN_ci`O;o6P0~.(+g">
-<next>
-<block type="comment" id="UWAJxSc1)Po.CTb(,vj=">
-<field name="COMMENT">Run Auto mode</field>
-<next>
-<block type="variables_set" id="yC^G|d#4}xRkqrL^2TY)">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_getProperty_Pose2D" id="wo]uIw?AH`;8VZgDdU9H">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Position</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-</block>
-</value>
-<next>
-<block type="variables_set" id="w]dWK3*hu!X4.CQdkas3">
-<field name="VAR" id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</field>
-<value name="VALUE">
-<block type="math_number" id="wK2gV=rH$MF9yhTm!-{[">
-<field name="NUM">0.25</field>
-</block>
-</value>
-<next>
-<block type="procedures_callnoreturn" id="Yo8kDnI^Uf2W14mlbBEK" disabled="true">
-<mutation name="ShiftDrive">
-<arg name="speed"/>
-<arg name="inches"/>
-</mutation>
-<value name="ARG0">
-<block type="variables_get" id="F*JZqTrm(6,IVhMfD_OP">
-<field name="VAR" id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</field>
-</block>
-</value>
-<value name="ARG1">
-<block type="math_number" id="{1]RGr~;-fsZJNRMg4B^">
-<field name="NUM">24</field>
-</block>
-</value>
-<next>
-<block type="procedures_callnoreturn" id="B5^8IqdVWMb*oe[-f23R" disabled="true">
-<mutation name="DisplayValues"/>
-<next>
-<block type="procedures_callnoreturn" id="ak9Y(3WXKotHoA?{EpmJ">
-<mutation name="DriveForward">
-<arg name="speed"/>
-<arg name="inches"/>
-</mutation>
-<value name="ARG0">
-<block type="variables_get" id="n=6WxMY:YySoB#3Um=Oi">
-<field name="VAR" id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</field>
-</block>
-</value>
-<value name="ARG1">
-<block type="math_number" id="O;:7V|7,eoY7!eUU~cd2">
-<field name="NUM">12</field>
-</block>
-</value>
-<next>
-<block type="procedures_callnoreturn" id="j6qJ[=gd)]eg1Vi~csLT">
-<mutation name="DisplayValues"/>
-<next>
-<block type="comment" id="Ih8K:EPcFE=DVdU+2mwW">
-<field name="COMMENT">End of actions</field>
-<next>
-<block type="telemetry_addTextData_All" id="^a]b{*l7hy@aO1]Q3D.z">
-<value name="KEY">
-<shadow type="text" id="p_1HquihZqn=s;`$[vvl">
-<field name="TEXT">Path</field>
-</shadow>
-</value>
-<value name="TEXT">
-<shadow type="text" id="hm.wjK#h@zW;6ZC7Dy*F">
-<field name="TEXT">Complete</field>
-</shadow>
-</value>
-<next>
-<block type="variables_set" id="I)ZpR`?6587!egFdyN|/">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_getProperty_Pose2D" id="?-ce}n+g|oMXoDqShJyb">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Position</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-</block>
-</value>
-<next>
-<block type="procedures_callnoreturn" id="DBG4gamxG`IEHRTK-))N">
-<mutation name="DisplayValues"/>
-<next>
-<block type="comment" id="D2jP::3R#uYdAW-e)9(Y">
-<field name="COMMENT">End of auto</field>
-<next>
-<block type="linearOpMode_sleep_Number" id="^[kJmW-+Z3I%yXY:f{E8">
-<value name="MILLISECONDS">
-<shadow type="math_number" id="IzKy(1$=g;IqS+,5=#Ma">
-<field name="NUM">1000000</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-</block>
-<block type="procedures_defnoreturn" id="Zlcw)QqK1T,$d!6nTReE" x="328" y="209">
+<block type="procedures_defnoreturn" id="Zlcw)QqK1T,$d!6nTReE" x="332" y="-15">
 <field name="NAME">InitVars</field>
 <comment pinned="false" h="80" w="160">Describe this function...</comment>
 <statement name="STACK">
@@ -464,7 +182,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 <field name="VAR" id="8]8Pq=LlSf/]hzmx}W@=">SampleArmPositionHeight</field>
 <value name="VALUE">
 <block type="math_number" id="JKiNp%/Oo_b9W!.bW-sc">
-<field name="NUM">-3000</field>
+<field name="NUM">-3400</field>
 </block>
 </value>
 <next>
@@ -480,9 +198,49 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 <field name="VAR" id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</field>
 <value name="VALUE">
 <block type="math_number" id="FTGl:qOo40}MS,|=LFSs">
-<field name="NUM">-350</field>
+<field name="NUM">-600</field>
 </block>
 </value>
+<next>
+<block type="variables_set" id="Lf7h.6M%s~3Na`l-jAZr">
+<field name="VAR" id=")7Uh^oY=$6S0r|3XgE?*">PickupTravelHeight</field>
+<value name="VALUE">
+<block type="math_number" id="Ani*c.5e~_Prs{o(h7Hw">
+<field name="NUM">-800</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="8=sDps91K80jlOKqGX9-">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+<value name="VALUE">
+<block type="math_number" id="v+5,RIN9MIf:C4MN5:35">
+<field name="NUM">-900</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="?biw:r9aWF-N1GM7+(@/">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+<value name="VALUE">
+<block type="math_number" id="@eu}b+}KO%6)N8Ls$xrJ">
+<field name="NUM">0</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="6dQsN6X.@k{#~K09,H^T">
+<field name="VAR" id="d(iYx9G.QR?a):J;I-;(">AfterHangHeight</field>
+<value name="VALUE">
+<block type="math_number" id="33vy;y=C{kr)z+K@rpU$">
+<field name="NUM">-3700</field>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
 </block>
 </next>
 </block>
@@ -522,75 +280,583 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </statement>
 </block>
-<block type="procedures_defnoreturn" id="i05ZsYe5,/Z[xp,Aura^" x="193" y="894">
-<field name="NAME">DisplayValues</field>
-<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<block type="procedures_defnoreturn" id="WtpyD@tEu+EoY=P9iY,D" deletable="false" x="-241" y="204">
+<field name="NAME">runOpMode</field>
+<comment pinned="false" h="349" w="598">This OpMode illustrates the concept of driving a path based on encoder counts.
+This OpMode requires that you have encoders on the wheels, otherwise you would use RobotAutoDriveByTime.
+This OpMode also requires that the drive Motors have been configured such that a positive power command moves them forward, and causes the encoders to count up.
+
+The desired path in this example is:
+  - Drive forward for 48 inches
+  - Spin right for 12 Inches
+  - Drive backward for 24 inches
+
+This OpMode has a function called encoderDrive that performs the actual movement.
+This function assumes that each movement is relative to the last stopping place.
+There are other ways to perform encoder based moves, but this method is probably the simplest.
+This OpMode uses the RUN_TO_POSITION mode.</comment>
+<data>{"commentPositionLeft":-23,"commentPositionTop":-380}</data>
 <statement name="STACK">
-<block type="telemetry_addTextData_All" id="m_SQu_a.wi[aR]GM^EM8">
+<block type="procedures_callnoreturn" id=".lfLQAFx_~=;cJnfu0lT">
+<mutation name="InitVars"/>
+<next>
+<block type="sparkFunOTOS_calibrateImu" id="-KC9//4m/W,~+sl;0^xn">
+<mutation has_output="false"/>
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<next>
+<block type="variables_set" id="5a$BqdrV7F4[q$_/j}TR">
+<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_Pose2D_create_withArgs" id="vE$txZq(W*N3oIz[tBrB">
+<value name="X">
+<shadow type="math_number" id=",.[}w6WkJkEyX|xPz^hj">
+<field name="NUM">2.5</field>
+</shadow>
+</value>
+<value name="Y">
+<shadow type="math_number" id="L/9-T+wPVeIQy3{g;@P)">
+<field name="NUM">6.375</field>
+</shadow>
+</value>
+<value name="H">
+<shadow type="math_number" id="6f+!Qg~_mUGx=TG}Um~v">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block type="sparkFunOTOS_setProperty_Pose2D" id="qs)Dn,z8O_?p4~r,Ngoa">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Offset</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<value name="VALUE">
+<block type="variables_get" id="w1^I3u[[gM88~0dFM]6z">
+<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
+</block>
+</value>
+<next>
+<block type="variables_set" id="^(?,H;.-.Wa[3(1lAxzb">
+<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_Pose2D_create_withArgs" id="@:.Z5)@xodjZBz4846g%">
+<value name="X">
+<shadow type="math_number" id="UpCraKNt9RAMdmEE4~X0">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="Y">
+<shadow type="math_number" id="u(FJ*tPAdVJ|Wg^0vG5S">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="H">
+<shadow type="math_number" id="GPyaX25MnG_|R(S+9o[R">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block type="sparkFunOTOS_setProperty_Pose2D" id="ocA*t5r{0U%Pt0aG$N/W">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<value name="VALUE">
+<block type="variables_get" id="T5t`.i^!NegzrT@OO8:H">
+<field name="VAR" id="VTSq0g{US8u#dauy%}T]">myPose</field>
+</block>
+</value>
+<next>
+<block type="sparkFunOTOS_setProperty_Number_ReturnBoolean" id="a}]:baF`_9)X1AF!jI~@">
+<mutation has_output="false"/>
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">LinearScalar</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="C(JkT++_,6i5Mh~6N^rG">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block type="sparkFunOTOS_setProperty_Number_ReturnBoolean" id="GpvHMjadFb%Jdzk]2.Qh">
+<mutation has_output="false"/>
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">AngularScalar</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="eMI_ap#1zA,WWu09tTxK">
+<field name="NUM">1</field>
+</shadow>
+</value>
+<next>
+<block type="sparkFunOTOS_resetTracking" id="(X`uqyynj$OCvFnSHT_U">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<next>
+<block type="variables_set" id="sYp[kQUPP{Hs+79M4_H/">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_Pose2D_create" id="i|/a=X}0vUbNSD-U,F^S"/>
+</value>
+<next>
+<block type="sparkFunOTOS_begin" id="sWxQ9EVg}u)AG1yQBGc}">
+<mutation has_output="false"/>
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+<next>
+<block type="procedures_callnoreturn" id="r]K(vw9nFU*sF+08Pk~~">
+<mutation name="ResetLiftProcess"/>
+<next>
+<block type="procedures_callnoreturn" id="/[TlhI=Ug+w,H1V0.%?X">
+<mutation name="DisplayValues"/>
+<next>
+<block type="linearOpMode_waitForStart" id=":`$wN_ci`O;o6P0~.(+g">
+<next>
+<block type="procedures_callnoreturn" id="zxg(E~hk`)CUsis.i2js">
+<mutation name="CloseClaw"/>
+<next>
+<block type="linearOpMode_sleep_Number" id="_ysGMZbZl7NRJnd)#O1.">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="pu}jvNQJ{a/r73/RG@gg">
+<field name="NUM">1000</field>
+</shadow>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="72OXg*vNAW:mf)y?FW*,">
+<mutation name="LiftSpecimenForTravel"/>
+<next>
+<block type="comment" id="UWAJxSc1)Po.CTb(,vj=">
+<field name="COMMENT">Run Auto mode</field>
+<next>
+<block type="variables_set" id="yC^G|d#4}xRkqrL^2TY)">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="wo]uIw?AH`;8VZgDdU9H">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+<next>
+<block type="variables_set" id="w]dWK3*hu!X4.CQdkas3">
+<field name="VAR" id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</field>
+<value name="VALUE">
+<block type="math_number" id="wK2gV=rH$MF9yhTm!-{[">
+<field name="NUM">0.75</field>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="ak9Y(3WXKotHoA?{EpmJ">
+<mutation name="DriveForward">
+<arg name="speed"/>
+<arg name="inches"/>
+</mutation>
+<value name="ARG0">
+<block type="variables_get" id="n=6WxMY:YySoB#3Um=Oi">
+<field name="VAR" id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</field>
+</block>
+</value>
+<value name="ARG1">
+<block type="math_number" id="O;:7V|7,eoY7!eUU~cd2">
+<field name="NUM">4</field>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="lrrx$T6PDEP+eC14voBd">
+<mutation name="DisplayValues"/>
+<next>
+<block type="linearOpMode_sleep_Number" id="G7k~*6,])ACf6|8~grMg" disabled="true">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="WE{xxYo%=^d#]eR?p8.l">
+<field name="NUM">10000</field>
+</shadow>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="Yo8kDnI^Uf2W14mlbBEK">
+<mutation name="ShiftDrive">
+<arg name="speed"/>
+<arg name="inches"/>
+</mutation>
+<value name="ARG0">
+<block type="variables_get" id="p55?]K@2(jn/*hh`GBZg">
+<field name="VAR" id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</field>
+</block>
+</value>
+<value name="ARG1">
+<block type="math_number" id="{1]RGr~;-fsZJNRMg4B^">
+<field name="NUM">9</field>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="3GYAFrOTGqLL2tV}/~uh">
+<mutation name="GotoSampleArmPosition"/>
+<next>
+<block type="procedures_callnoreturn" id="O$v])mT1p;jMuMN$(_BD">
+<mutation name="DriveForward">
+<arg name="speed"/>
+<arg name="inches"/>
+</mutation>
+<value name="ARG0">
+<block type="variables_get" id="AP],d7LBL.2!3NKCXL%w">
+<field name="VAR" id="d::q~F[z*s#WMhdU{C!l">DRIVE_SPEED</field>
+</block>
+</value>
+<value name="ARG1">
+<block type="math_number" id="Ayr6eDCD(8qhK$`W$5!o">
+<field name="NUM">21</field>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="1ycn{DQ8Ty34Z]za;`UC">
+<mutation name="OpenClaw"/>
+<next>
+<block type="procedures_callnoreturn" id="[TQPQTbPCeidC{F5Qb7W">
+<mutation name="LiftAfterSpecimenHang"/>
+<next>
+<block type="linearOpMode_sleep_Number" id="SlOLtJAD+}`5yTX.Gu7/">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="gy7G#03bCr4K~uexa6TF">
+<field name="NUM">500</field>
+</shadow>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="6-%;0x*D6#,s^DZ4yB/X">
+<mutation name="DriveForward">
+<arg name="speed"/>
+<arg name="inches"/>
+</mutation>
+<value name="ARG0">
+<block type="math_number" id="l^~k.gE?|SULV#z^I#um">
+<field name="NUM">0.5</field>
+</block>
+</value>
+<value name="ARG1">
+<block type="math_number" id="xmn@R`4J}Pdku$^$kAn=">
+<field name="NUM">-17</field>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="6T#+XHsB0hq#=G0Ke{GW">
+<mutation name="TurnInPlace">
+<arg name="speed"/>
+<arg name="inches"/>
+</mutation>
+<value name="ARG0">
+<block type="math_number" id="BldR6-;(L**ew`1CM1G3">
+<field name="NUM">0.5</field>
+</block>
+</value>
+<value name="ARG1">
+<block type="math_number" id="YW.iKD6#Rc{.Fjei!t{9">
+<field name="NUM">-85</field>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="B5^8IqdVWMb*oe[-f23R">
+<mutation name="DisplayValues"/>
+<next>
+<block type="comment" id="Ih8K:EPcFE=DVdU+2mwW">
+<field name="COMMENT">End of actions</field>
+<next>
+<block type="telemetry_addTextData_All" id="^a]b{*l7hy@aO1]Q3D.z">
 <value name="KEY">
-<shadow type="text" id="o@HAjSUK6~#WY18;poSe">
-<field name="TEXT">Starting at</field>
+<shadow type="text" id="p_1HquihZqn=s;`$[vvl">
+<field name="TEXT">Path</field>
 </shadow>
 </value>
 <value name="TEXT">
-<shadow type="text" id="%!QVma+)_P@LvM:]=C/*">
-<field name="TEXT">text</field>
+<shadow type="text" id="hm.wjK#h@zW;6ZC7Dy*F">
+<field name="TEXT">Complete</field>
 </shadow>
-<block type="text_join" id="rKk.^l:J]Is}HphJZUm(">
-<mutation items="3"/>
-<value name="ADD0">
-<block type="misc_formatNumber_withWidth" id="_09:GnhgHOm(MG55D8iW">
-<value name="NUMBER">
-<shadow type="math_number" id="nLHM+uG3KxXAtfUUJX=c">
-<field name="NUM">3.14159265</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id=")yIM5j.sbKyvZ8N-T1Xo">
-<field name="IDENTIFIER">FLAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"FL"}</data>
+</value>
+<next>
+<block type="variables_set" id="I)ZpR`?6587!egFdyN|/">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="?-ce}n+g|oMXoDqShJyb">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
 </block>
 </value>
-<value name="WIDTH">
-<shadow type="math_number" id="UKEYl!y8[O^SWEE@:Ji_">
-<field name="NUM">7</field>
+<next>
+<block type="procedures_callnoreturn" id="DBG4gamxG`IEHRTK-))N">
+<mutation name="DisplayValues"/>
+<next>
+<block type="comment" id="D2jP::3R#uYdAW-e)9(Y">
+<field name="COMMENT">End of auto</field>
+<next>
+<block type="linearOpMode_sleep_Number" id="^[kJmW-+Z3I%yXY:f{E8">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="IzKy(1$=g;IqS+,5=#Ma">
+<field name="NUM">1000000</field>
 </shadow>
 </value>
-<value name="PRECISION">
-<shadow type="math_number" id="2gv`7iWfR#l]L8=mf!iL">
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block type="procedures_defnoreturn" id="Gl#6NwEKzwF-AL:/fUqJ" x="-976" y="764">
+<field name="NAME">LiftAfterSpecimenHang</field>
+<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<statement name="STACK">
+<block type="controls_if" id=")ziW.(y?U,p{c-baSLZ#">
+<value name="IF0">
+<block type="logic_compare" id="g*;Fd{*(V(0}LU0j;(en">
+<field name="OP">GT</field>
+<value name="A">
+<block type="dcMotor_getProperty_Number" id=")]0qI+hPMysNatx6sI%n">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="2yHjc18xVM@}kW@|C8EE">
+<field name="VAR" id="d(iYx9G.QR?a):J;I-;(">AfterHangHeight</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="dcMotor_setProperty_Number" id="XgET;X*FXWND`f{If6V3">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="adO%2C/cu?/5UA%HOZXa">
+<field name="NUM">-0.5</field>
+</shadow>
+</value>
+<next>
+<block type="controls_whileUntil" id="0po|Gb4867Pi3x#w#G+y">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_compare" id="#J4S)}{k*^H?j$jO$wi(">
+<field name="OP">GTE</field>
+<value name="A">
+<block type="dcMotor_getProperty_Number" id="Yf)c)Z=}r80AW7syeRYZ">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="QgvYd{@|wNFH2112{|?k">
+<field name="VAR" id="d(iYx9G.QR?a):J;I-;(">AfterHangHeight</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="{]q7!e?5F_D(f~^$:cp@">
+<field name="COMMENT">Optional pause after each move.</field>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setProperty_Number" id="B}9y;Tt9%s]KHq36A-89">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="Lvur(H_soac`lvTIMqKa">
 <field name="NUM">0</field>
 </shadow>
 </value>
 </block>
-</value>
-<value name="ADD1">
-<block type="text" id="*EFQ/OPVSX)N7k$a0CA~">
-<field name="TEXT"> : </field>
+</next>
 </block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block type="procedures_defnoreturn" id="i05ZsYe5,/Z[xp,Aura^" x="307" y="743">
+<field name="NAME">DisplayValues</field>
+<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<statement name="STACK">
+<block type="telemetry_addNumericData_Number" id="A,Up(vmdA}G.8/(%iTAw">
+<value name="KEY">
+<shadow type="text" id="AS~nZPHWILuJIu+oS3BO">
+<field name="TEXT">CurrentPosiion</field>
+</shadow>
 </value>
-<value name="ADD2">
-<block type="misc_formatNumber_withWidth" id=".sTH.nI7W),^-nlXGA5(">
 <value name="NUMBER">
-<shadow type="math_number" id="-sS%t#yr1VqWOXE}s;zv">
-<field name="NUM">3.14159265</field>
+<shadow type="math_number" id="P@Lj0DE~WFGrlaFOkJ7n">
+<field name="NUM">123</field>
 </shadow>
-<block type="dcMotor_getProperty_Number" id="43^W++FFxJ!Oq.Q-ga0~">
-<field name="IDENTIFIER">BRAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"BR"}</data>
+<block type="variables_get" id="-eCFLgfowQ$NbR@Uja1M">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
 </block>
 </value>
-<value name="WIDTH">
-<shadow type="math_number" id="b)f/PL+F8i}ore7C={xw">
-<field name="NUM">7</field>
+<next>
+<block type="telemetry_addNumericData_Number" id="^%j)*9,;ex6oC]S,==?G">
+<value name="KEY">
+<shadow type="text" id="[y$egVzj@vCJmJVmgb1l">
+<field name="TEXT">New Position</field>
 </shadow>
 </value>
-<value name="PRECISION">
-<shadow type="math_number" id="`dwd#@mn[@$)=gi`N}ro">
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="aC({FsesjNp8JQAsD:wa">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="N{W!-A1T}Hx[v(YG4*[#">
+<value name="KEY">
+<shadow type="text" id="9#oRDzv-g4;yAghL3pCb">
+<field name="TEXT">ExtenderLimit</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="logic_ternary" id="yjbEg@[55RIUf0$:Uh=d">
+<value name="IF">
+<block type="touchSensor_getProperty_Boolean" id="#G,t]Y);v;87[r9{.13F">
+<field name="IDENTIFIER">ExtenderLimit1AsTouchSensor</field>
+<field name="PROP">IsPressed</field>
+<data>{"IDENTIFIER":"ExtenderLimit1"}</data>
+</block>
+</value>
+<value name="THEN">
+<block type="math_number" id="X]_{00;p+/4#@-lXm_K*">
+<field name="NUM">1</field>
+</block>
+</value>
+<value name="ELSE">
+<block type="math_number" id="W}qUK|ku0i6j;BFcor{_">
 <field name="NUM">0</field>
-</shadow>
+</block>
 </value>
 </block>
 </value>
+<next>
+<block type="telemetry_addNumericData_Number" id="O9KoVaN$RtktWoQ2a1SJ">
+<value name="KEY">
+<shadow type="text" id="gAhZGp25]m]0cKLWB/~W">
+<field name="TEXT">LiftArmLimit</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number" id="IClB0MZHLY+vkki)THY!">
+<field name="NUM">123</field>
+</shadow>
+<block type="logic_ternary" id="RmKV8lwMi^!G:9WS.=Cu">
+<value name="IF">
+<block type="digitalChannel_getProperty_Boolean" id="kbFL-e0)jop!vDooAO$5">
+<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
+<field name="PROP">State</field>
+<data>{"IDENTIFIER":"LiftArmLimit"}</data>
+</block>
+</value>
+<value name="THEN">
+<block type="math_number" id="KoCuW/mLQ}9Wd/4AKWh/">
+<field name="NUM">1</field>
+</block>
+</value>
+<value name="ELSE">
+<block type="math_number" id="/LP:tQo=^t)R(*.0Z{3c">
+<field name="NUM">0</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="|i5[5L+g$B!`n~Bo/-g~">
+<value name="KEY">
+<shadow type="text" id="HW{./]v5Qq09B[sWdcKX">
+<field name="TEXT">Arm Hieght</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number" id="$-H4pjMqD1$X~wM]dHlm">
+<field name="NUM">123</field>
+</shadow>
+<block type="dcMotor_getProperty_Number" id="p8o95^6VJ+GA|Z?qWOTl">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
 </block>
 </value>
 <next>
@@ -666,9 +932,349 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </next>
 </block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
 </statement>
 </block>
-<block type="procedures_defnoreturn" id="g7^iVe4p{MvVLd5L_eXv" x="-299" y="1239">
+<block type="procedures_defnoreturn" id="-9hni[-H17^O[ybxZ3fC" x="-970" y="1064">
+<field name="NAME">LiftSpecimenForTravel</field>
+<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<statement name="STACK">
+<block type="controls_if" id="Pk,*VL$,V6%[@8{}QgFz">
+<value name="IF0">
+<block type="logic_compare" id="{]4,{fqB5BmX@n-Y_Xp]">
+<field name="OP">GT</field>
+<value name="A">
+<block type="dcMotor_getProperty_Number" id="sTgI(Nxof(.^Z_(jpa6k">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="8!M3]u3epn8=TH0A`Ql%">
+<field name="VAR" id=")7Uh^oY=$6S0r|3XgE?*">PickupTravelHeight</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="dcMotor_setProperty_Number" id="Xc$P!Nwn8XV5-Hdv=uL;">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="N;3~vB#?cLo`(mQ7STR8">
+<field name="NUM">-0.5</field>
+</shadow>
+</value>
+<next>
+<block type="controls_whileUntil" id="M.3Y6.]~@7W_gG$e5,uh">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_compare" id="p?2{U_3qp~6tJ2bVj=$x">
+<field name="OP">GTE</field>
+<value name="A">
+<block type="dcMotor_getProperty_Number" id="9GQ1VN}P:^W_a-{UgjZL">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="D+scTSOoq?T6yb8T)g(t">
+<field name="VAR" id=")7Uh^oY=$6S0r|3XgE?*">PickupTravelHeight</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="a}+k2xmjgl:PysD-UnE@">
+<field name="COMMENT">Optional pause after each move.</field>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setProperty_Number" id="Z{Jm:4xus]w)loDX~h%t">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="kOnNXx`=N*zl)Nd`s8~i">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+</block>
+<block type="procedures_defnoreturn" id=",UnnjMbS806c6%H_eQl{" x="-967" y="1397">
+<field name="NAME">ResetLiftProcess</field>
+<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<statement name="STACK">
+<block type="procedures_callnoreturn" id="BFe(FAQj]/V)e:.qW(d}">
+<mutation name="OpenClaw"/>
+<next>
+<block type="procedures_callnoreturn" id=",D^)}yZ7B.NTWqC3o/`v">
+<mutation name="DisplayValues"/>
+<next>
+<block type="controls_if" id="2)2L5E5GnwLK}bSC[4E-">
+<value name="IF0">
+<block type="logic_negate" id="3AOD)B^}26l%MpO|bgE^">
+<value name="BOOL">
+<block type="touchSensor_getProperty_Boolean" id="O*Ein;)!?EXXGjd-]71n">
+<field name="IDENTIFIER">ExtenderLimit1AsTouchSensor</field>
+<field name="PROP">IsPressed</field>
+<data>{"IDENTIFIER":"ExtenderLimit1"}</data>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="dcMotor_setProperty_Number" id="R?eNu=`XJH4LZ;nF4M,?">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="4(oE/!w.BB9/kpcqY_@O">
+<field name="NUM">-0.75</field>
+</shadow>
+</value>
+<next>
+<block type="controls_whileUntil" id=",I4|;|sUGg@ifsfE+V~;">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_negate" id="L7=pF_6!C9t21vTu6)7_">
+<value name="BOOL">
+<block type="touchSensor_getProperty_Boolean" id="%6~]0+~{z`$D5tgAR[sP">
+<field name="IDENTIFIER">ExtenderLimit1AsTouchSensor</field>
+<field name="PROP">IsPressed</field>
+<data>{"IDENTIFIER":"ExtenderLimit1"}</data>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="R$w;$Mp8#98?#:!2c9+l">
+<field name="COMMENT">Optional pause after each move.</field>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setProperty_Number" id="tGr4X:[F/Fx.7S7Nuey,">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="zQduhz+Fff-K`h2|}N#!">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_RunMode" id="{YMGaBHk#5Gb(rMO2$bW">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">Mode</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_runMode" id=".T4qM1I,e,F1y=PJMhPA">
+<field name="RUN_MODE">STOP_AND_RESET_ENCODER</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_RunMode" id="+$.Mb-r^6tIy#k;7?Adi">
+<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<field name="PROP">Mode</field>
+<data>{"IDENTIFIER":"Extender"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_runMode" id="Ldv`={v9^nZwwmpP%3,e">
+<field name="RUN_MODE">RUN_USING_ENCODER</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block type="procedures_callnoreturn" id="zZH#Ylmu{laae=+@ctV?">
+<mutation name="DisplayValues"/>
+<next>
+<block type="controls_if" id="fa*7_C).Ii%+,,1.h2Q@">
+<value name="IF0">
+<block type="digitalChannel_getProperty_Boolean" id="gX6k/nKF:OXNEFk2G9Y/">
+<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
+<field name="PROP">State</field>
+<data>{"IDENTIFIER":"LiftArmLimit"}</data>
+</block>
+</value>
+<statement name="DO0">
+<block type="dcMotor_setProperty_Number" id="+gP^6MT-.+V6#4avvB0[">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id=")dG.QokPUi%(d?SHvI~]">
+<field name="NUM">0.5</field>
+</shadow>
+</value>
+<next>
+<block type="controls_whileUntil" id="`mZf!E^gF^UW,~mnkNP;">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="digitalChannel_getProperty_Boolean" id="Vcl!=4%k?BeG-r{;=V4F">
+<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
+<field name="PROP">State</field>
+<data>{"IDENTIFIER":"LiftArmLimit"}</data>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="+A+%OH%-+yWgHt4x?CO%">
+<field name="COMMENT">Optional pause after each move.</field>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setProperty_Number" id="d,uPf,WdVG|=w3s9_CCN">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="-*rz/rknM7Hp9oMN?qOV">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_RunMode" id="L6@o=*#D_}mY*hm1:1ic">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Mode</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_runMode" id="6Hvw/YaQX.n:iBx;FDo+">
+<field name="RUN_MODE">STOP_AND_RESET_ENCODER</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setProperty_RunMode" id="NQZ?FF!(U;I57z?J3c[7">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Mode</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="dcMotor_typedEnum_runMode" id="nTwYFB}[b^k}3ACO/(me">
+<field name="RUN_MODE">RUN_USING_ENCODER</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+<next>
+<block type="procedures_callnoreturn" id="(soH1Z#|B/I+Em|52V7Z">
+<mutation name="DisplayValues"/>
+<next>
+<block type="controls_if" id="fU[??@pNL+uIKWgLTx$7">
+<value name="IF0">
+<block type="logic_compare" id="SMxuGOK76/;f]mzFd0Qw">
+<field name="OP">GT</field>
+<value name="A">
+<block type="dcMotor_getProperty_Number" id="0~%%9o:XGIK*31TrMJGX">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="Qv}{DlRjKil%|9/N!6eP">
+<field name="VAR" id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="dcMotor_setProperty_Number" id="}$+dAA8b3cNNZ;of*x=p">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="-x`=7z!{#!1+T!/]+ilI">
+<field name="NUM">-0.5</field>
+</shadow>
+</value>
+<next>
+<block type="controls_whileUntil" id="WGMI:y+F5L4?ZwWWwXqD">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_compare" id="yHl`{|F{S5-su_]u)k%,">
+<field name="OP">GTE</field>
+<value name="A">
+<block type="dcMotor_getProperty_Number" id="bf^yI0;u3Hy|j}Iw8O4`">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="E}I49Nvx)J6xd;.slO-A">
+<field name="VAR" id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="+0q9TvACPAhD18qJ*%Vv">
+<field name="COMMENT">Optional pause after each move.</field>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setProperty_Number" id="wk(u~F)0x(d{;6F|TRm[">
+<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<field name="PROP">Power</field>
+<data>{"IDENTIFIER":"LiftArm"}</data>
+<value name="VALUE">
+<shadow type="math_number" id="N@.qMk+d*%Ejd#G8V4PL">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block type="procedures_defnoreturn" id="g7^iVe4p{MvVLd5L_eXv" x="234" y="1628">
 <field name="NAME">OpenClaw</field>
 <comment pinned="false" h="80" w="160">Describe this function...</comment>
 <statement name="STACK">
@@ -711,7 +1317,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </statement>
 </block>
-<block type="procedures_defnoreturn" id="/={s$A^{7YoNs:*ocFId" x="-299" y="1417">
+<block type="procedures_defnoreturn" id="/={s$A^{7YoNs:*ocFId" x="567" y="1616">
 <field name="NAME">CloseClaw</field>
 <comment pinned="false" h="80" w="160">Describe this function...</comment>
 <statement name="STACK">
@@ -754,538 +1360,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </statement>
 </block>
-<block type="procedures_defnoreturn" id="[.`-XEJ:o|%Rn;WVc#3m" x="-240" y="1713">
-<mutation>
-<arg name="speed" varid="(WKmO%Y%5@KgP9DoLdGk"/>
-<arg name="inches" varid="B$4{g|Fj?KESK_kTgVPB"/>
-</mutation>
-<field name="NAME">ShiftDrive</field>
-<comment pinned="false" h="80" w="160">Describe this function...</comment>
-<statement name="STACK">
-<block type="procedures_callnoreturn" id="wY+DUz~,OCkGk4caS/jm">
-<mutation name="SetupRunMode"/>
-<next>
-<block type="linearOpMode_sleep_Number" id="ok%/4h)C[?M|u]acGl(%">
-<value name="MILLISECONDS">
-<shadow type="math_number" id="bC.J{|T{aJBPEJM~~UkQ">
-<field name="NUM">250</field>
-</shadow>
-</value>
-<next>
-<block type="variables_set" id="iaK3EXaz}9tv(P:??@y+" disabled="true">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-<value name="VALUE">
-<block type="math_arithmetic" id="{xSYo=TlA_ar~1l`LV3,">
-<field name="OP">ADD</field>
-<value name="A">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="QWW`R`zlM?.q4D6SfYb#">
-<field name="IDENTIFIER">FLAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"FL"}</data>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
-<block type="math_round" id="E?{D[Pejkj.MS.b8IU[8">
-<field name="OP">ROUNDDOWN</field>
-<value name="NUM">
-<shadow type="math_number">
-<field name="NUM">3.1</field>
-</shadow>
-<block type="math_arithmetic" id="BWWcrEEaVyFwzNJ$ko4k">
-<field name="OP">MULTIPLY</field>
-<value name="A">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id="%5MR#(._XZT%*indDd#A">
-<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id=":@Gy]H6V*[7[68y=v(l%">
-<field name="VAR" id="N9h1OExw}GYk0f/s`|b_">COUNTS_PER_INCH</field>
-</block>
-</value>
-</block>
-</value>
-</block>
-</value>
-</block>
-</value>
-<next>
-<block type="variables_set" id="Wy^`5j/LRXFQm|dVC[tX">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-<value name="VALUE">
-<block type="variables_get" id="CF^d~AcX8NiB]jjP[spX">
-<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="j[F*BBWv5%./d[pRhZPo">
-<value name="KEY">
-<shadow type="text" id="u;/7q/r)+=hF!biYa*JC">
-<field name="TEXT">Speed</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="(~!X[Gu:h+VgI$E^GZn4">
-<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="2YN-DCaEN{}U;$QGJ#C7">
-<value name="KEY">
-<shadow type="text" id="Xn(io9dS%IS=o*HE6i#p">
-<field name="TEXT">New Target</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="(rY!@qmro=l|#M`LQdTZ">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-</block>
-</value>
-<next>
-<block type="telemetry_update" id="|?6b-]d]R~[^f[m(HIYf">
-<next>
-<block type="linearOpMode_sleep_Number" id="1Vqil=CB*+du3$[v6QPv">
-<value name="MILLISECONDS">
-<shadow type="math_number" id="gwf7H9jE`dp!-Lm|qc4G">
-<field name="NUM">2000</field>
-</shadow>
-</value>
-<next>
-<block type="dcMotor_setDualProperty_Number" id="JDGv/hztGr63EG/|@TG9">
-<field name="PROP">Power</field>
-<field name="IDENTIFIER1">FLAsDcMotor</field>
-<field name="IDENTIFIER2">BRAsDcMotor</field>
-<data>{"IDENTIFIER1":"FL","IDENTIFIER2":"BR"}</data>
-<value name="VALUE1">
-<shadow type="math_number" id="sNCnA@/;k~R#MzSIkUC)">
-<field name="NUM">1</field>
-</shadow>
-<block type="math_arithmetic" id="rO2Y$Ex%vfBEz`99m#5O">
-<field name="OP">MULTIPLY</field>
-<value name="A">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id="T#l/6Z|WC8^*fP!.50?I">
-<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number" id="g!G#:xX5UHp.zn{[W#|a">
-<field name="NUM">-1</field>
-</shadow>
-</value>
-</block>
-</value>
-<value name="VALUE2">
-<shadow type="math_number" id="dyPIxVfzyA+0!J}bfVBg">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id="|j-1}@8LFC98dWjoE@C$">
-<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
-</block>
-</value>
-<next>
-<block type="dcMotor_setDualProperty_Number" id="Ua=+QS9yyhK+2t2[x2f%">
-<field name="PROP">Power</field>
-<field name="IDENTIFIER1">FRAsDcMotor</field>
-<field name="IDENTIFIER2">BLAsDcMotor</field>
-<data>{"IDENTIFIER1":"FR","IDENTIFIER2":"BL"}</data>
-<value name="VALUE1">
-<shadow type="math_number" id="YDDFq[=]FLI6Q@f,9Z[i">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id="39lobMia7-]HATJUWr3a">
-<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
-</block>
-</value>
-<value name="VALUE2">
-<shadow type="math_number" id="81ALc`agxJ9eQ@6_{yJP">
-<field name="NUM">1</field>
-</shadow>
-<block type="math_arithmetic" id="DO1|6w-{p+r4($o#U*S7">
-<field name="OP">MULTIPLY</field>
-<value name="A">
-<shadow type="math_number" id="jTq9u($v%BN6KWo59`Wz">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id="k0}zhFS2Rv}wrtcUs?*j">
-<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number" id=":;DikHZZYUfl3JpAvI0G">
-<field name="NUM">-1</field>
-</shadow>
-</value>
-</block>
-</value>
-<next>
-<block type="variables_set" id="8n!hQ1o|3kS]hBeupGD-">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_getProperty_Pose2D" id="_AKIho@].Rb_sr8+*^Di">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Position</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-</block>
-</value>
-<next>
-<block type="comment" id="h(nOjBRT2D4.coJX24|A">
-<field name="COMMENT">Ensure that the OpMode is still active.</field>
-<next>
-<block type="controls_if" id="^xoRpL6L@RPbE5GxnNa:">
-<mutation else="1"/>
-<value name="IF0">
-<block type="logic_compare" id="2~.b3B)*e(_.f:KFgsv.">
-<field name="OP">GTE</field>
-<value name="A">
-<block type="variables_get" id="oFb}R@NNtAsL0hR2#aeI">
-<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
-</block>
-</value>
-<value name="B">
-<block type="math_number" id="uuKYqUlcm=i:K~RF}:Ab">
-<field name="NUM">0</field>
-</block>
-</value>
-</block>
-</value>
-<statement name="DO0">
-<block type="controls_whileUntil" id="p|MaD1.`rza.X3/+(6+_">
-<field name="MODE">WHILE</field>
-<value name="BOOL">
-<block type="logic_operation" id="o$Y-[C.Hxu~-F^T%]@76" inline="false">
-<field name="OP">AND</field>
-<value name="A">
-<block type="linearOpMode_opModeIsActive" id="BfK3eZcJ;j:d.nrRKCsR"/>
-</value>
-<value name="B">
-<block type="logic_compare" id="pTTj$l[{mfVxxs39}AWy">
-<field name="OP">LTE</field>
-<value name="A">
-<block type="math_arithmetic" id="sap_qMCv$`,9c=3VfL]F">
-<field name="OP">MULTIPLY</field>
-<value name="A">
-<shadow type="math_number" id="9XGdXQnq9}N!5l8^DJ-R">
-<field name="NUM">-1</field>
-</shadow>
-</value>
-<value name="B">
-<shadow type="math_number" id="#pBdRRo5tkpwo_3sgz-f">
-<field name="NUM">1</field>
-</shadow>
-<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="t@QT`#5xh4IoXpt@mL_=">
-<field name="PROP">x</field>
-<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
-<value name="POSE">
-<block type="variables_get" id="I/u%?vC1Bn5dG*,}o$)O">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-</block>
-</value>
-</block>
-</value>
-</block>
-</value>
-<value name="B">
-<block type="variables_get" id="=c;GR3m{r}9e}?8-qAr@">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-</block>
-</value>
-</block>
-</value>
-</block>
-</value>
-<statement name="DO">
-<block type="comment" id="S5`WZDgikJk!{G3J{o$G">
-<field name="COMMENT">Display it for the driver.</field>
-<next>
-<block type="variables_set" id="sPqPO~WR=B6B!vdx{9Y,">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_getProperty_Pose2D" id="9e2RAFE+#tp:.saYtQIL">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Position</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-</block>
-</value>
-</block>
-</next>
-</block>
-</statement>
-</block>
-</statement>
-<statement name="ELSE">
-<block type="controls_whileUntil" id="w~6=8n]Ke7}v}{)os^Qn">
-<field name="MODE">WHILE</field>
-<value name="BOOL">
-<block type="logic_operation" id="hkh-[Z/rEi$N64}Z!~Sv" inline="false">
-<field name="OP">AND</field>
-<value name="A">
-<block type="linearOpMode_opModeIsActive" id="kjzgT)Sq/-,ZY%PR@OO+"/>
-</value>
-<value name="B">
-<block type="logic_compare" id="I)zoOE.qBbL=YTBt84[P">
-<field name="OP">LTE</field>
-<value name="A">
-<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="K)i=O_Wo(hL(,D:+6YMl">
-<field name="PROP">x</field>
-<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
-<value name="POSE">
-<block type="variables_get" id="a3BC^k76yElJZcj!z/x#">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-</block>
-</value>
-</block>
-</value>
-<value name="B">
-<block type="variables_get" id="hpC,.yWpF_QFHn/29V^`">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-</block>
-</value>
-</block>
-</value>
-</block>
-</value>
-<statement name="DO">
-<block type="comment" id="X]MIM;u^,}qaN+#1j~-D">
-<field name="COMMENT">Display it for the driver.</field>
-<next>
-<block type="variables_set" id="V(?}du:?h6q$c:]HDA^G">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_getProperty_Pose2D" id="LLtYg!vlG1zF%$aUerj8">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Position</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-</block>
-</value>
-</block>
-</next>
-</block>
-</statement>
-</block>
-</statement>
-<next>
-<block type="comment" id="8$~@%X.C8rkbJcy@x]Eh">
-<field name="COMMENT">Stop all motion.</field>
-<next>
-<block type="dcMotor_setDualProperty_Number" id="3BZK8E^m%z4|c0A!KD1q">
-<field name="PROP">Power</field>
-<field name="IDENTIFIER1">FLAsDcMotor</field>
-<field name="IDENTIFIER2">FRAsDcMotor</field>
-<data>{"IDENTIFIER1":"FL","IDENTIFIER2":"FR"}</data>
-<value name="VALUE1">
-<shadow type="math_number" id="PXO:MBVjxLrSOuX)d701">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<value name="VALUE2">
-<shadow type="math_number" id="uls-3}YJMnRFsQMKj[*t">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<next>
-<block type="dcMotor_setDualProperty_Number" id="xl{Ze|^jTh0`l3P/@CoP">
-<field name="PROP">Power</field>
-<field name="IDENTIFIER1">BLAsDcMotor</field>
-<field name="IDENTIFIER2">BRAsDcMotor</field>
-<data>{"IDENTIFIER1":"BL","IDENTIFIER2":"BR"}</data>
-<value name="VALUE1">
-<shadow type="math_number" id="Xl-M/uB8aAFY!vnGtUez">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<value name="VALUE2">
-<shadow type="math_number" id="dlko{$cbfqy`eSSJ2*F0">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="{n$^3BveFC~FFtZOtm{2">
-<value name="KEY">
-<shadow type="text" id="hJ(6[NfHs~T{VpPl%c:v">
-<field name="TEXT">inches</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id=";E5dp(oNx[]c@.bma$Ia">
-<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="BonSV}c3?Y7b_mtR45/#">
-<value name="KEY">
-<shadow type="text" id="u/X5J|Y0AH,KtsDtWb0;">
-<field name="TEXT">New Target</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="8wJsfifho00CWl){a?UY">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="h~LzNhLDJM!Kns`X|AsB">
-<value name="KEY">
-<shadow type="text" id="Dm5r[P$t?JHD^IA`ESvH">
-<field name="TEXT">Fl</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="?{V:h0%Hy#9(u!7(`,k/">
-<field name="IDENTIFIER">FLAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"FL"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="y8`e[w(Y)]70wFJ1JV_x">
-<value name="KEY">
-<shadow type="text" id="$jPch7-;i^0I@jzSN5]{">
-<field name="TEXT">FR</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="-b1.J_odxC6Sb:$@6j!i">
-<field name="IDENTIFIER">FRAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"FR"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="Fk0YGC_PW*HXq7v$lTqp">
-<value name="KEY">
-<shadow type="text" id="Z6J6~e:_bf71o1O+?C:Q">
-<field name="TEXT">BL</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="l]{PNSL)7OnN(E%?8Lf.">
-<field name="IDENTIFIER">BLAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"BL"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="rU0(/81%vgil~LL(K|u)">
-<value name="KEY">
-<shadow type="text" id="Y*BhZTemfd26CedpOiZ6">
-<field name="TEXT">BR</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="5ZR0Y=H$~`IYOB{gymK`">
-<field name="IDENTIFIER">BRAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"BR"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_update" id="Q0plv*RONDq*fBRInpl%">
-<next>
-<block type="comment" id="2@gzNApl{})mvE(omA~O">
-<field name="COMMENT">Turn off RUN_TO_POSITION.</field>
-<next>
-<block type="comment" id="jB#MI=Jd-iA=ixgN(5x|">
-<field name="COMMENT">Optional pause after each move.</field>
-<next>
-<block type="linearOpMode_sleep_Number" id="+PEe#mrb}V;JCO0U7,W+">
-<value name="MILLISECONDS">
-<shadow type="math_number" id="hn(X/sC,+ZOh)g4vVc:s">
-<field name="NUM">250</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-</block>
-<block type="procedures_defnoreturn" id="U@n.P4[fHyfFi%3O5uJc" x="1130" y="1928">
+<block type="procedures_defnoreturn" id="U@n.P4[fHyfFi%3O5uJc" x="259" y="1805">
 <field name="NAME">SetupRunMode</field>
 <comment pinned="false" h="80" w="160">Describe this function...</comment>
 <statement name="STACK">
@@ -1361,7 +1436,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </statement>
 </block>
-<block type="procedures_defnoreturn" id="H)fqob0a:#Whh@SnGJ[l" x="-225" y="3563">
+<block type="procedures_defnoreturn" id="H)fqob0a:#Whh@SnGJ[l" x="-1160" y="2167">
 <mutation>
 <arg name="speed" varid="(WKmO%Y%5@KgP9DoLdGk"/>
 <arg name="inches" varid="B$4{g|Fj?KESK_kTgVPB"/>
@@ -1369,6 +1444,27 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 <field name="NAME">DriveForward</field>
 <comment pinned="false" h="80" w="160">Describe this function...</comment>
 <statement name="STACK">
+<block type="variables_set" id="}HFr42@muIBM8wDr}L.#">
+<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
+<value name="VALUE">
+<block type="math_arithmetic" id="FM,^(^]6,K-+Ynm#OHfs">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number" id="acF,9M)L9H,H`R)~u3PG">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="AJ[K9!dlg3H)vJ]vjBCJ">
+<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="QC-_Uonmx@C-3^[9Pu!!">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
 <block type="procedures_callnoreturn" id="_wNS[_cK~W8/+rsfqs=W">
 <mutation name="SetupRunMode"/>
 <next>
@@ -1379,95 +1475,96 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </shadow>
 </value>
 <next>
-<block type="variables_set" id="+iG42hMeb[S([ki{y5l[" disabled="true">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
+<block type="procedures_callnoreturn" id="Xpr8g6WV}L65d)+EpeLa">
+<mutation name="MoveDisplay"/>
+<next>
+<block type="variables_set" id=")Vz,xoIKw?AK)p@.CF}$">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
 <value name="VALUE">
-<block type="math_arithmetic" id="BJ*.ZxW+UhSaU7:faetR">
-<field name="OP">ADD</field>
-<value name="A">
-<shadow type="math_number" id="n#;gfCn_2dH(}Puk]qp=">
-<field name="NUM">1</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="iy0%_a1~Z!a,Oc7@rp9Q">
-<field name="IDENTIFIER">FLAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"FL"}</data>
+<block type="sparkFunOTOS_getProperty_Pose2D" id="e,tx=7tXP2dK^*-TJng=">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
 </block>
 </value>
-<value name="B">
-<shadow type="math_number" id="e`h.@qD+,CTBzWQcA4C-">
-<field name="NUM">1</field>
-</shadow>
-<block type="math_round" id=".:P9mGM4$Wy,k,QNACD_">
-<field name="OP">ROUNDDOWN</field>
-<value name="NUM">
-<shadow type="math_number" id="d21D4HP~6GP|oY+SZ$xU">
-<field name="NUM">3.1</field>
-</shadow>
-<block type="math_arithmetic" id="~V#t|lhC9V@1h%Vn=wku">
-<field name="OP">MULTIPLY</field>
-<value name="A">
-<shadow type="math_number" id="Bv5-2w9gx[pVNtbVo2:6">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id="zy[vdDEm,15A4*)g/QvC">
-<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
-</block>
-</value>
-<value name="B">
-<shadow type="math_number" id="f9#)Z2!VaahnM[ZX7PO:">
-<field name="NUM">1</field>
-</shadow>
-<block type="variables_get" id="R-`]:Bj`LAli.Bf_wH%V">
-<field name="VAR" id="N9h1OExw}GYk0f/s`|b_">COUNTS_PER_INCH</field>
-</block>
-</value>
-</block>
-</value>
+<next>
+<block type="variables_set" id="o,={~0=d@vSk3D==;Uh_">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id=")(mNc.Lx|Gga+thf1.[e">
+<field name="PROP">y</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="_23|:.%(t@[eMh@f*y[q">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
 </block>
 </value>
 </block>
 </value>
 <next>
 <block type="variables_set" id="cLBZ@:/W%vw$qKqd,{ll">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
 <value name="VALUE">
+<block type="math_arithmetic" id="it`PO%:kq2s?/z0t{U4M">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number" id="_:D4mw~fQ`_5V(DUYf.q">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="dNt=42EHMLGKqO0x|eVf">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="[0P^I$w_PFQe=?+=sDTL">
+<field name="NUM">-1</field>
+</shadow>
 <block type="variables_get" id="DT9I;sq9s{u;ec2J6K`W">
 <field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
 </block>
 </value>
-<next>
-<block type="telemetry_addNumericData_Number" id="oqb:okJ2YVtORqA!kDCM">
-<value name="KEY">
-<shadow type="text" id="PtSRBvRbTpUDoTcJ2g^s">
-<field name="TEXT">Speed</field>
-</shadow>
+</block>
 </value>
-<value name="NUMBER">
+<next>
+<block type="controls_if" id="IUDBF@C(I_S,GFu1qvh#">
+<value name="IF0">
+<block type="logic_compare" id="B#s.7;+7doafL}E$:=YJ">
+<field name="OP">GT</field>
+<value name="A">
+<block type="variables_get" id="-|V8dp/ysv7R%X]k)J~W">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="B(qYb%Ws-Z-qkpo7|_3@">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="variables_set" id=",^%ia,U_i*Vne#fM^ik4">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+<value name="VALUE">
+<block type="math_arithmetic" id="xal^d[Q#U`R0|,ni?0.P">
+<field name="OP">MULTIPLY</field>
+<value name="A">
 <shadow type="math_number">
-<field name="NUM">123</field>
+<field name="NUM">1</field>
 </shadow>
-<block type="variables_get" id="ErWwM%Ove:(t!ae7[w9L">
+<block type="variables_get" id="i*eP)b%14o)7yJ6!2Zr1">
 <field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
 </block>
 </value>
-<next>
-<block type="telemetry_addNumericData_Number" id="8(}sDMb}lolG[3+[FEpR">
-<value name="KEY">
-<shadow type="text" id="2Q[gfmC9Bqx4s`Fl1@#Y">
-<field name="TEXT">New Target</field>
+<value name="B">
+<shadow type="math_number" id="z{9O2{i%a]sS7!.S/[Km">
+<field name="NUM">-1</field>
 </shadow>
 </value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="7n2[S[!A$Xs*kAq=dG#X">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
 </block>
 </value>
-<next>
-<block type="telemetry_update" id="T{qK(S.bySDF]H8p?R;?">
+</block>
+</statement>
 <next>
 <block type="dcMotor_setDualProperty_Number" id="wvFX[eUTBd0)ccm,h$GA">
 <field name="PROP">Power</field>
@@ -1539,32 +1636,22 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </value>
 <next>
-<block type="variables_set" id=")Vz,xoIKw?AK)p@.CF}$">
-<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
-<value name="VALUE">
-<block type="sparkFunOTOS_getProperty_Pose2D" id="e,tx=7tXP2dK^*-TJng=">
-<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
-<field name="PROP">Position</field>
-<data>{"IDENTIFIER":"OTOS"}</data>
-</block>
-</value>
-<next>
 <block type="comment" id="vw^E9kfNp6%lRl{Bh21I">
 <field name="COMMENT">Ensure that the OpMode is still active.</field>
 <next>
 <block type="controls_if" id="=NFrbt04RH.999.W?ULu">
 <mutation else="1"/>
 <value name="IF0">
-<block type="logic_compare" id="T@4+)``FoXto(S!F@]+F">
-<field name="OP">GTE</field>
+<block type="logic_compare" id="8LcB24jWG5m_PAs7tbkP">
+<field name="OP">LT</field>
 <value name="A">
-<block type="variables_get" id="m!V`GXehCoj+b;dlPeVu">
-<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+<block type="variables_get" id="EPOauF7HwL~B|M|C:j6*">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
 </block>
 </value>
 <value name="B">
-<block type="math_number" id="a:nf1kmeg`DbK[[SO(0f">
-<field name="NUM">0</field>
+<block type="variables_get" id="ZRR[9Mw|8Vkgj9)%O]EM">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
 </block>
 </value>
 </block>
@@ -1580,19 +1667,8 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </value>
 <value name="B">
 <block type="logic_compare" id="w9|{Nv542cKUHeQ1cbh1">
-<field name="OP">LT</field>
+<field name="OP">GTE</field>
 <value name="A">
-<block type="math_arithmetic" id="u|,sQdHDjif2p+xgb7Zr">
-<field name="OP">MULTIPLY</field>
-<value name="A">
-<shadow type="math_number" id=";7.dd@H*/!THRb0.S/2x">
-<field name="NUM">-1</field>
-</shadow>
-</value>
-<value name="B">
-<shadow type="math_number">
-<field name="NUM">1</field>
-</shadow>
 <block type="sparkFunOTOS_Pose2D_getProperty_Number" id="QhJ#LZ9.n5NIv@Qpbs_v">
 <field name="PROP">y</field>
 <comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
@@ -1603,11 +1679,9 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </value>
 </block>
 </value>
-</block>
-</value>
 <value name="B">
 <block type="variables_get" id="G9X[lU3IxA|8Dze-XgkP">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
 </block>
 </value>
 </block>
@@ -1628,25 +1702,8 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </value>
 <next>
-<block type="telemetry_addNumericData_Number" id="^{Pw_59UShc-.%j=r,gO">
-<value name="KEY">
-<shadow type="text" id="KW;n+LwDk:|gbwatmvF2">
-<field name="TEXT">New Target</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="P7/xvM#8qN6iuL1y?NxT">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-</block>
-</value>
-<next>
 <block type="procedures_callnoreturn" id="zO[(ttY)U@qx+du!#Qn^">
 <mutation name="DisplayValues"/>
-</block>
-</next>
 </block>
 </next>
 </block>
@@ -1680,7 +1737,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </value>
 <value name="B">
 <block type="variables_get" id=":zD?xXA6@$i6-M3YopKr">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
 </block>
 </value>
 </block>
@@ -1698,21 +1755,6 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </value>
 <next>
-<block type="telemetry_addNumericData_Number" id="?liVq[WdNGH[|sir%k*{">
-<value name="KEY">
-<shadow type="text" id="|}(ADg{_uhSiC6x@f}8A">
-<field name="TEXT">New Target</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="gzuAnXwmrA_`=AO8,)H8">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-</block>
-</value>
-<next>
 <block type="procedures_callnoreturn" id="C,jv`vbbr/i@bgIDbduK">
 <mutation name="DisplayValues"/>
 <next>
@@ -1723,146 +1765,18 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </next>
 </block>
-</next>
-</block>
 </statement>
 </block>
 </statement>
+<next>
+<block type="procedures_callnoreturn" id="VL{ob{[o!e=u35*P2Xt3">
+<mutation name="ZeroPower"/>
 <next>
 <block type="comment" id="x:P0_ocN_0ogvv/8LKD:">
 <field name="COMMENT">Stop all motion.</field>
 <next>
-<block type="dcMotor_setDualProperty_Number" id="5~$r9:uB*v%V:k,g2BP*">
-<field name="PROP">Power</field>
-<field name="IDENTIFIER1">FLAsDcMotor</field>
-<field name="IDENTIFIER2">FRAsDcMotor</field>
-<data>{"IDENTIFIER1":"FL","IDENTIFIER2":"FR"}</data>
-<value name="VALUE1">
-<shadow type="math_number" id="?RWp-2BGi5@E3lIZJ3BC">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<value name="VALUE2">
-<shadow type="math_number" id="xwRQ/V;;z)%4u83$]lwE">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<next>
-<block type="dcMotor_setDualProperty_Number" id="5@+,pum1r4JEhNN!#Crv">
-<field name="PROP">Power</field>
-<field name="IDENTIFIER1">BLAsDcMotor</field>
-<field name="IDENTIFIER2">BRAsDcMotor</field>
-<data>{"IDENTIFIER1":"BL","IDENTIFIER2":"BR"}</data>
-<value name="VALUE1">
-<shadow type="math_number" id="X1^n4Q{=d_~;NmBn_Jt^">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<value name="VALUE2">
-<shadow type="math_number" id="}BkuB~PfiWX}mb[LOHu8">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="8ACRvoH)dFVdu%UNd[cC">
-<value name="KEY">
-<shadow type="text" id="3:lLFB.g*0TOQ4E_woLx">
-<field name="TEXT">inches</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="rJz0U6u^^m0z(/s5C,N]">
-<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="xw{*2U`nI]nDQd1ZGo70">
-<value name="KEY">
-<shadow type="text" id="nVn},o?XEXL0^`nQJiCO">
-<field name="TEXT">New Target</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="variables_get" id="*h36}e^k*-z.w$8M,#-7">
-<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">newLeftTarget</field>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="sg5B,j@wmXb`8til/A=n">
-<value name="KEY">
-<shadow type="text" id="lD9AA}!qbYmTOd]uN@oL">
-<field name="TEXT">Fl</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="N:IPvpslLU_5TSjYWd@u">
-<field name="IDENTIFIER">FLAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"FL"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="$i^Na(zrf90uGrk-)$#%">
-<value name="KEY">
-<shadow type="text" id="G@mw|+l|_9ejQ.*wJ83|">
-<field name="TEXT">FR</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="4Kx0RG?xHvIQ/0B=]o!=">
-<field name="IDENTIFIER">FRAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"FR"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="Vz25kF%ha5]h6kf2[],[">
-<value name="KEY">
-<shadow type="text" id=";{0!sx)*.kdqQ_F(Y2`s">
-<field name="TEXT">BL</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="1XtKl`[jFTDi$fms/1fj">
-<field name="IDENTIFIER">BLAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"BL"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_addNumericData_Number" id="U}VqoeCYM}h?BeJ{$[o-">
-<value name="KEY">
-<shadow type="text" id="@s^wwNiQS_(Ct~Y~_`:Q">
-<field name="TEXT">BR</field>
-</shadow>
-</value>
-<value name="NUMBER">
-<shadow type="math_number">
-<field name="NUM">123</field>
-</shadow>
-<block type="dcMotor_getProperty_Number" id="H[mmO,eMZ*%ipi8Xt${L">
-<field name="IDENTIFIER">BRAsDcMotor</field>
-<field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"BR"}</data>
-</block>
-</value>
-<next>
-<block type="telemetry_update" id="FTX2;ysmgzSUw;(|$P:h">
+<block type="procedures_callnoreturn" id="LI9e.}GYJqU_X@|m#g8!">
+<mutation name="MoveDisplay"/>
 <next>
 <block type="comment" id="{EUuh=r@HmVipy.1ee4.">
 <field name="COMMENT">Turn off RUN_TO_POSITION.</field>
@@ -1911,6 +1825,369 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </next>
 </block>
+</statement>
+</block>
+<block type="procedures_defnoreturn" id="[.`-XEJ:o|%Rn;WVc#3m" x="-157" y="2188">
+<mutation>
+<arg name="speed" varid="(WKmO%Y%5@KgP9DoLdGk"/>
+<arg name="inches" varid="B$4{g|Fj?KESK_kTgVPB"/>
+</mutation>
+<field name="NAME">ShiftDrive</field>
+<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<statement name="STACK">
+<block type="procedures_callnoreturn" id="wY+DUz~,OCkGk4caS/jm">
+<mutation name="SetupRunMode"/>
+<next>
+<block type="linearOpMode_sleep_Number" id="ok%/4h)C[?M|u]acGl(%">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="bC.J{|T{aJBPEJM~~UkQ">
+<field name="NUM">250</field>
+</shadow>
+</value>
+<next>
+<block type="variables_set" id="8n!hQ1o|3kS]hBeupGD-">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="_AKIho@].Rb_sr8+*^Di">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+<next>
+<block type="variables_set" id="p8:.o05`m~[9+h7:JP52">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="G7mAM-,aCnu`hkmo8u8a">
+<field name="PROP">x</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="n~EGeSm_?VMKEsJB*mw2">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="variables_set" id="%Q%*5oVU5%nzBqVgtud8">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+<value name="VALUE">
+<block type="math_arithmetic" id="TA(zVXMh|UKmXfH|z_RS">
+<field name="OP">ADD</field>
+<value name="A">
+<shadow type="math_number" id="=6PCfqKLi)Jho{:`,f/c">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="KIn_MW@MMaN+!yDa~gQI">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number">
+<field name="NUM">-1</field>
+</shadow>
+<block type="variables_get" id="`Z^pl_he06HY[f+Gj{c:">
+<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="controls_if" id="=)q9I*kT4O,,bJ1;%I`o">
+<value name="IF0">
+<block type="logic_compare" id="T$j7K1U0*vZt?kF_oafJ">
+<field name="OP">LTE</field>
+<value name="A">
+<block type="variables_get" id="3!:ODm6Mpq8!/BAPT[-~">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="X2M!r+_:e[DED8:}o/^k">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="variables_set" id="w7r(.e3~dfsfoQb;E,IQ">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+<value name="VALUE">
+<block type="math_arithmetic" id="8^rg3c#g5EiLMM27IkXa">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="WCS*mRB;mNg,R(RRYqF3">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="qAY/s}p:?}7+c:JY%N8Y">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block type="procedures_callnoreturn" id="0;`.^.ELa)68xhx]jZ}2">
+<mutation name="MoveDisplay"/>
+<next>
+<block type="linearOpMode_sleep_Number" id="m5nODULcnJm@O|D|SJ=f" disabled="true">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="Y]azf)ySez/ydP?b:nsX">
+<field name="NUM">5000</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="JDGv/hztGr63EG/|@TG9">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FLAsDcMotor</field>
+<field name="IDENTIFIER2">BRAsDcMotor</field>
+<data>{"IDENTIFIER1":"FL","IDENTIFIER2":"BR"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="sNCnA@/;k~R#MzSIkUC)">
+<field name="NUM">1</field>
+</shadow>
+<block type="math_arithmetic" id="rO2Y$Ex%vfBEz`99m#5O">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="T#l/6Z|WC8^*fP!.50?I">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="g!G#:xX5UHp.zn{[W#|a">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="dyPIxVfzyA+0!J}bfVBg">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="|j-1}@8LFC98dWjoE@C$">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="Ua=+QS9yyhK+2t2[x2f%">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FRAsDcMotor</field>
+<field name="IDENTIFIER2">BLAsDcMotor</field>
+<data>{"IDENTIFIER1":"FR","IDENTIFIER2":"BL"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="YDDFq[=]FLI6Q@f,9Z[i">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="39lobMia7-]HATJUWr3a">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="81ALc`agxJ9eQ@6_{yJP">
+<field name="NUM">1</field>
+</shadow>
+<block type="math_arithmetic" id="DO1|6w-{p+r4($o#U*S7">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number" id="jTq9u($v%BN6KWo59`Wz">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="k0}zhFS2Rv}wrtcUs?*j">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id=":;DikHZZYUfl3JpAvI0G">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block type="comment" id="h(nOjBRT2D4.coJX24|A">
+<field name="COMMENT">Ensure that the OpMode is still active.</field>
+<next>
+<block type="controls_if" id="^xoRpL6L@RPbE5GxnNa:">
+<mutation else="1"/>
+<value name="IF0">
+<block type="logic_compare" id="xz75W%E|Gp^V(S/jqSQ_">
+<field name="OP">LT</field>
+<value name="A">
+<block type="variables_get" id="d|F$rJIAP?$*7FQ3l`)s">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="eqP,$J;y$VL;WG.*N5$9">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="controls_whileUntil" id="p|MaD1.`rza.X3/+(6+_">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_operation" id="o$Y-[C.Hxu~-F^T%]@76" inline="false">
+<field name="OP">AND</field>
+<value name="A">
+<block type="linearOpMode_opModeIsActive" id="BfK3eZcJ;j:d.nrRKCsR"/>
+</value>
+<value name="B">
+<block type="logic_compare" id="pTTj$l[{mfVxxs39}AWy">
+<field name="OP">GTE</field>
+<value name="A">
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="t@QT`#5xh4IoXpt@mL_=">
+<field name="PROP">x</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="I/u%?vC1Bn5dG*,}o$)O">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="=c;GR3m{r}9e}?8-qAr@">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="S5`WZDgikJk!{G3J{o$G">
+<field name="COMMENT">Display it for the driver.</field>
+<next>
+<block type="procedures_callnoreturn" id="xi[TtGz]aM8]egSG_127">
+<mutation name="DisplayValues"/>
+<next>
+<block type="variables_set" id="sPqPO~WR=B6B!vdx{9Y,">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="9e2RAFE+#tp:.saYtQIL">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+<statement name="ELSE">
+<block type="controls_whileUntil" id="w~6=8n]Ke7}v}{)os^Qn">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_operation" id="hkh-[Z/rEi$N64}Z!~Sv" inline="false">
+<field name="OP">AND</field>
+<value name="A">
+<block type="linearOpMode_opModeIsActive" id="kjzgT)Sq/-,ZY%PR@OO+"/>
+</value>
+<value name="B">
+<block type="logic_compare" id="I)zoOE.qBbL=YTBt84[P">
+<field name="OP">LTE</field>
+<value name="A">
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="K)i=O_Wo(hL(,D:+6YMl">
+<field name="PROP">x</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="a3BC^k76yElJZcj!z/x#">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="hpC,.yWpF_QFHn/29V^`">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="X]MIM;u^,}qaN+#1j~-D">
+<field name="COMMENT">Display it for the driver.</field>
+<next>
+<block type="procedures_callnoreturn" id="H=}m+)5`jMPXSpKSX_iI">
+<mutation name="DisplayValues"/>
+<next>
+<block type="variables_set" id="V(?}du:?h6q$c:]HDA^G">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="LLtYg!vlG1zF%$aUerj8">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+<next>
+<block type="comment" id="8$~@%X.C8rkbJcy@x]Eh">
+<field name="COMMENT">Stop all motion.</field>
+<next>
+<block type="procedures_callnoreturn" id="U3)g;bzLZ9/YW}o_P)q|">
+<mutation name="ZeroPower"/>
+<next>
+<block type="procedures_callnoreturn" id="*I6{]_XmUsv:GH)%#@lA">
+<mutation name="MoveDisplay"/>
+<next>
+<block type="comment" id="2@gzNApl{})mvE(omA~O">
+<field name="COMMENT">Turn off RUN_TO_POSITION.</field>
+<next>
+<block type="comment" id="jB#MI=Jd-iA=ixgN(5x|">
+<field name="COMMENT">Optional pause after each move.</field>
+<next>
+<block type="linearOpMode_sleep_Number" id="+PEe#mrb}V;JCO0U7,W+">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="hn(X/sC,+ZOh)g4vVc:s">
+<field name="NUM">250</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
 </next>
 </block>
 </next>
@@ -1927,7 +2204,422 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </statement>
 </block>
-<block type="procedures_defnoreturn" id="igl`t[?^OA;yFR^CMw96" x="-224" y="5559">
+<block type="procedures_defnoreturn" id="uY[;ydqP@^m,`e/CZAh5" x="806" y="2178">
+<mutation>
+<arg name="speed" varid="(WKmO%Y%5@KgP9DoLdGk"/>
+<arg name="inches" varid="B$4{g|Fj?KESK_kTgVPB"/>
+</mutation>
+<field name="NAME">TurnInPlace</field>
+<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<statement name="STACK">
+<block type="variables_set" id="Uvu{|+.YhmRAaJY;L^:F" disabled="true">
+<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
+<value name="VALUE">
+<block type="math_arithmetic" id="il/_GS@n1YX-04GF!AfR">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id=";G~TvtnU_ktW)z-%ON@]">
+<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="v5$Zj1n/jH$ODjz!,~G8">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="Ju8Q(jK_*#z4*I4_xCA)">
+<mutation name="SetupRunMode"/>
+<next>
+<block type="linearOpMode_sleep_Number" id="6Q[.;]IDUawsPFLehash">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="6~qZWk9G+]dHL;CWVizr">
+<field name="NUM">250</field>
+</shadow>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="04Mj(?dl+po5Wq3wpqs4">
+<mutation name="MoveDisplay"/>
+<next>
+<block type="variables_set" id="+fa;82S-B`B/c:r@i]XE">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="Ui@b:k-V0N(_0U~q4~;;">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+<next>
+<block type="variables_set" id="c(A1DwYo2b^_5[Mc6t-Z">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="B+U^!aMEn`L@~/WRSHOe">
+<field name="PROP">h</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="tU`T,Mt||7+GX{gcsrA-">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+</block>
+</value>
+</block>
+</value>
+<next>
+<block type="variables_set" id="=cS8V4=_J}AE+M;wBLTi">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+<value name="VALUE">
+<block type="variables_get" id="/Vk9rG[P|eBmY0F[G$tL">
+<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
+</block>
+</value>
+<next>
+<block type="controls_if" id="YH*ee.0E,;5y):QqI*ei">
+<value name="IF0">
+<block type="logic_compare" id="q4RBR$)LV0cJ*dexR5v6">
+<field name="OP">GT</field>
+<value name="A">
+<block type="variables_get" id="Y{fhiCYhw8ThEdu=FEug">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id=";(pl=Ihuw2hSu+.~ijdi">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="variables_set" id="T[GahlfjFPgV|e76p_=G">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+<value name="VALUE">
+<block type="math_arithmetic" id="PJ!g0R%vywZJ}SctMe.A">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="`akCq99jirFMECh3-y_+">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="pVs)Dd+!sb@pi{9f~%f5">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+</block>
+</statement>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="|O$4baFnJShRqR7*xjt0">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FLAsDcMotor</field>
+<field name="IDENTIFIER2">BLAsDcMotor</field>
+<data>{"IDENTIFIER1":"FL","IDENTIFIER2":"BL"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="QIFv#An4iND#tVb1lixr">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="1+u^{O$=!K_W6$V4,=7X">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number">
+<field name="NUM">0</field>
+</shadow>
+<block type="math_arithmetic" id="=0+i:QMnrw|:w*@Ma/^a">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="pLmr?*#hWNK54Y~0PGv`">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id="WtCYP=_r%$`55?+t9ZRA">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="HfS|hK%h6D0gC|#k~)1`">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FRAsDcMotor</field>
+<field name="IDENTIFIER2">BRAsDcMotor</field>
+<data>{"IDENTIFIER1":"FR","IDENTIFIER2":"BR"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id=",VZnN7crhmOyx1+j4wrW">
+<field name="NUM">0</field>
+</shadow>
+<block type="math_arithmetic" id="+rpjc4VJdwSS(v}{-=,a">
+<field name="OP">MULTIPLY</field>
+<value name="A">
+<shadow type="math_number">
+<field name="NUM">1</field>
+</shadow>
+<block type="variables_get" id="Fb@}vAXZ2`Tqd84V1kWg">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<value name="B">
+<shadow type="math_number" id=")fnn?D-cvzvn2{#U8WB%">
+<field name="NUM">-1</field>
+</shadow>
+</value>
+</block>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="hYEO4^62msgkbk@DqeKC">
+<field name="NUM">0</field>
+</shadow>
+<block type="variables_get" id="0]IsVu{O$4}olkM8|?rx">
+<field name="VAR" id="(WKmO%Y%5@KgP9DoLdGk">speed</field>
+</block>
+</value>
+<next>
+<block type="comment" id="88#4PO2Uu-.pAYE_=Q,B">
+<field name="COMMENT">Ensure that the OpMode is still active.</field>
+<next>
+<block type="controls_if" id="BLsNHP0F1.,zSo(5tOZZ">
+<mutation else="1"/>
+<value name="IF0">
+<block type="logic_compare" id="4r=R5do6Pw^4)zgCrzj$">
+<field name="OP">LT</field>
+<value name="A">
+<block type="variables_get" id="YuE+D8_a}7=xUs!%uK:2">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="GdY|L;/KQ-G(1hh``mWS">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO0">
+<block type="controls_whileUntil" id=":W|eM/S8ea]Z(X6_=Nie">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_operation" id="`@Q%]ev`8y}Yi0py_2r/" inline="false">
+<field name="OP">AND</field>
+<value name="A">
+<block type="linearOpMode_opModeIsActive" id="Z$ldNfQq0_/JpV[2i#Fu"/>
+</value>
+<value name="B">
+<block type="logic_compare" id="9[~PA%xMvcU[WKv:{6c$">
+<field name="OP">GTE</field>
+<value name="A">
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="[1GooXy=)0-INfR(wal9">
+<field name="PROP">h</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id=";n1{{fj_@,(9HStIYM0:">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="=Y[;Lk4:aN.v^1}4+%ed">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="comment" id="1i(0ZQAh0U:adYqez.IW">
+<field name="COMMENT">Display it for the driver.</field>
+<next>
+<block type="variables_set" id="g_%AXnMZ?5+E%o=CsZto">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="=wCy,cgKccX|*HYMe,)O">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="Y/0WkQZjiSnzSw=~`.h}">
+<mutation name="DisplayValues"/>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+<statement name="ELSE">
+<block type="controls_whileUntil" id="HkQ,VGM$yt)qk*~V#xtA">
+<field name="MODE">WHILE</field>
+<value name="BOOL">
+<block type="logic_operation" id="Tv#*9EiIOZd.4+r)tGbd" inline="false">
+<field name="OP">AND</field>
+<value name="A">
+<block type="linearOpMode_opModeIsActive" id="?:O:SiF`-1{KP=o1iKd!"/>
+</value>
+<value name="B">
+<block type="logic_compare" id="tpE/KXrw_gHrH3EfPTZ~">
+<field name="OP">LTE</field>
+<value name="A">
+<block type="sparkFunOTOS_Pose2D_getProperty_Number" id="BXb:?cMt+`K#(?un!pV{">
+<field name="PROP">h</field>
+<comment pinned="false" h="150" w="325">Get the x value from the given SparkFunOTOS.Pose2D object.</comment>
+<value name="POSE">
+<block type="variables_get" id="0`E9||6nZsrWNUq4Sy31">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+</block>
+</value>
+</block>
+</value>
+<value name="B">
+<block type="variables_get" id="boChNyDD)[S*ew%16E5s">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+</block>
+</value>
+</block>
+</value>
+<statement name="DO">
+<block type="variables_set" id="({#^7~Vj4WMaRruTNC??">
+<field name="VAR" id="$+9y-Z_oEBV!nv4s@Jv?">RobotPose</field>
+<value name="VALUE">
+<block type="sparkFunOTOS_getProperty_Pose2D" id="xwi{:A!y%h%_]0=|0u1~">
+<field name="IDENTIFIER">OTOSAsSparkFunOTOS</field>
+<field name="PROP">Position</field>
+<data>{"IDENTIFIER":"OTOS"}</data>
+</block>
+</value>
+<next>
+<block type="procedures_callnoreturn" id="f:TQY_$6t34(5(~ZzM}1">
+<mutation name="DisplayValues"/>
+<next>
+<block type="comment" id="yVoz?_A-C~NNuNmRS[7K">
+<field name="COMMENT">Display it for the driver.</field>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+</statement>
+<next>
+<block type="procedures_callnoreturn" id="/wi+0z#94bdkaDKFbXt+">
+<mutation name="ZeroPower"/>
+<next>
+<block type="comment" id="oK9!D)YgJhxIIxk|u|no">
+<field name="COMMENT">Stop all motion.</field>
+<next>
+<block type="procedures_callnoreturn" id="OtudO(KLKV(S[Y?^=aoM">
+<mutation name="MoveDisplay"/>
+<next>
+<block type="comment" id="j7Y/B_(#}?8)~JFY-=b)">
+<field name="COMMENT">Turn off RUN_TO_POSITION.</field>
+<next>
+<block type="comment" id="XwXILGqWjB6BBSOn4~OF">
+<field name="COMMENT">Optional pause after each move.</field>
+<next>
+<block type="linearOpMode_sleep_Number" id="@G@hwTsTd3Trc#xKAE+L">
+<value name="MILLISECONDS">
+<shadow type="math_number" id="f~}QMxX--5|S+[l~tCG]">
+<field name="NUM">250</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block type="procedures_defnoreturn" id="iee+hU1@IlorB.QH/(r{" x="-983" y="3422">
+<field name="NAME">ZeroPower</field>
+<comment pinned="false" h="80" w="160">Describe this function...</comment>
+<statement name="STACK">
+<block type="dcMotor_setDualProperty_Number" id="5~$r9:uB*v%V:k,g2BP*">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">FLAsDcMotor</field>
+<field name="IDENTIFIER2">FRAsDcMotor</field>
+<data>{"IDENTIFIER1":"FL","IDENTIFIER2":"FR"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="?RWp-2BGi5@E3lIZJ3BC">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="xwRQ/V;;z)%4u83$]lwE">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<next>
+<block type="dcMotor_setDualProperty_Number" id="5@+,pum1r4JEhNN!#Crv">
+<field name="PROP">Power</field>
+<field name="IDENTIFIER1">BLAsDcMotor</field>
+<field name="IDENTIFIER2">BRAsDcMotor</field>
+<data>{"IDENTIFIER1":"BL","IDENTIFIER2":"BR"}</data>
+<value name="VALUE1">
+<shadow type="math_number" id="X1^n4Q{=d_~;NmBn_Jt^">
+<field name="NUM">0</field>
+</shadow>
+</value>
+<value name="VALUE2">
+<shadow type="math_number" id="}BkuB~PfiWX}mb[LOHu8">
+<field name="NUM">0</field>
+</shadow>
+</value>
+</block>
+</next>
+</block>
+</statement>
+</block>
+<block type="procedures_defnoreturn" id="igl`t[?^OA;yFR^CMw96" x="-76" y="3422">
 <field name="NAME">GotoSampleArmPosition</field>
 <comment pinned="false" h="80" w="160">Describe this function...</comment>
 <statement name="STACK">
@@ -1956,7 +2648,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 <data>{"IDENTIFIER":"LiftArm"}</data>
 <value name="VALUE">
 <shadow type="math_number" id="yX1^oz;wW8hhTM4D.BIx">
-<field name="NUM">-0.75</field>
+<field name="NUM">-1</field>
 </shadow>
 </value>
 <next>
@@ -2034,7 +2726,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 <data>{"IDENTIFIER":"Extender"}</data>
 <value name="VALUE">
 <shadow type="math_number" id="Vo3GThF{c]TxAFjdwNCb">
-<field name="NUM">0.75</field>
+<field name="NUM">1</field>
 </shadow>
 </value>
 <next>
@@ -2091,264 +2783,131 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </block>
 </statement>
 </block>
-<block type="procedures_defnoreturn" id=",UnnjMbS806c6%H_eQl{" x="-222" y="6038">
-<field name="NAME">ResetLiftProcess</field>
+<block type="procedures_defnoreturn" id="IS:3nt].L+`8G93Kqtsd" x="-983" y="3644">
+<field name="NAME">MoveDisplay</field>
 <comment pinned="false" h="80" w="160">Describe this function...</comment>
 <statement name="STACK">
-<block type="procedures_callnoreturn" id="BFe(FAQj]/V)e:.qW(d}">
-<mutation name="OpenClaw"/>
-<next>
-<block type="controls_if" id="2)2L5E5GnwLK}bSC[4E-">
-<value name="IF0">
-<block type="touchSensor_getProperty_Boolean" id="O*Ein;)!?EXXGjd-]71n">
-<field name="IDENTIFIER">ExtenderLimitAsTouchSensor</field>
-<field name="PROP">IsPressed</field>
-<data>{"IDENTIFIER":"ExtenderLimit"}</data>
-</block>
-</value>
-<statement name="DO0">
-<block type="dcMotor_setProperty_Number" id="R?eNu=`XJH4LZ;nF4M,?">
-<field name="IDENTIFIER">ExtenderAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"Extender"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="4(oE/!w.BB9/kpcqY_@O">
-<field name="NUM">0.75</field>
+<block type="telemetry_addNumericData_Number" id="8ACRvoH)dFVdu%UNd[cC">
+<value name="KEY">
+<shadow type="text" id="3:lLFB.g*0TOQ4E_woLx">
+<field name="TEXT">inches</field>
 </shadow>
 </value>
-<next>
-<block type="controls_whileUntil" id=",I4|;|sUGg@ifsfE+V~;">
-<field name="MODE">WHILE</field>
-<value name="BOOL">
-<block type="logic_operation" id="lHS3ITQY[(`NP@sRSQg*" inline="false">
-<field name="OP">AND</field>
-<value name="A">
-<block type="linearOpMode_opModeIsActive" id="RvnQK/Ea.gMM`*s]MzLp"/>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="rJz0U6u^^m0z(/s5C,N]">
+<field name="VAR" id="B$4{g|Fj?KESK_kTgVPB">inches</field>
+</block>
 </value>
-<value name="B">
-<block type="logic_compare" id="9x)u;;r)$$Et]Y0;sC*X">
-<field name="OP">LT</field>
-<value name="A">
-<block type="dcMotor_getProperty_Number" id="_*$28$M5?!=hs(CV[;jE">
-<field name="IDENTIFIER">ExtenderAsDcMotor</field>
+<next>
+<block type="telemetry_addNumericData_Number" id="xw{*2U`nI]nDQd1ZGo70">
+<value name="KEY">
+<shadow type="text" id="nVn},o?XEXL0^`nQJiCO">
+<field name="TEXT">New Target</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="*h36}e^k*-z.w$8M,#-7">
+<field name="VAR" id="-grm0ki0]/uIdrgr:s*,">NewTargetPosition</field>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="dnX[`4F}ieZ[+`;KvpR=">
+<value name="KEY">
+<shadow type="text" id="zbBv(M}CZ#!Dgp9R%4K3">
+<field name="TEXT">Current inch Position</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="variables_get" id="GRKhjfjrppNvUZl{=Uxh">
+<field name="VAR" id="v%|R9J(pCeJzVDR;p+TU">CurrentPosition</field>
+</block>
+</value>
+<next>
+<block type="telemetry_addNumericData_Number" id="sg5B,j@wmXb`8til/A=n">
+<value name="KEY">
+<shadow type="text" id="lD9AA}!qbYmTOd]uN@oL">
+<field name="TEXT">Fl</field>
+</shadow>
+</value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="dcMotor_getProperty_Number" id="N:IPvpslLU_5TSjYWd@u">
+<field name="IDENTIFIER">FLAsDcMotor</field>
 <field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"Extender"}</data>
+<data>{"IDENTIFIER":"FL"}</data>
 </block>
 </value>
-<value name="B">
-<block type="variables_get" id="UFR2+DVaK7{9gt/LNp0+">
-<field name="VAR" id="Y,?L%WyfA,qkLn{sx^n7">SampleArmExtenderPosition</field>
-</block>
-</value>
-</block>
-</value>
-</block>
-</value>
-<statement name="DO">
-<block type="comment" id="R$w;$Mp8#98?#:!2c9+l">
-<field name="COMMENT">Optional pause after each move.</field>
-</block>
-</statement>
 <next>
-<block type="dcMotor_setProperty_Number" id="tGr4X:[F/Fx.7S7Nuey,">
-<field name="IDENTIFIER">ExtenderAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"Extender"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="zQduhz+Fff-K`h2|}N#!">
-<field name="NUM">0</field>
+<block type="telemetry_addNumericData_Number" id="$i^Na(zrf90uGrk-)$#%">
+<value name="KEY">
+<shadow type="text" id="G@mw|+l|_9ejQ.*wJ83|">
+<field name="TEXT">FR</field>
 </shadow>
 </value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="{YMGaBHk#5Gb(rMO2$bW">
-<field name="IDENTIFIER">ExtenderAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"Extender"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id=".T4qM1I,e,F1y=PJMhPA">
-<field name="RUN_MODE">STOP_AND_RESET_ENCODER</field>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
 </shadow>
-</value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="+$.Mb-r^6tIy#k;7?Adi">
-<field name="IDENTIFIER">ExtenderAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"Extender"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="Ldv`={v9^nZwwmpP%3,e">
-<field name="RUN_MODE">RUN_USING_ENCODER</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-<next>
-<block type="controls_if" id="fa*7_C).Ii%+,,1.h2Q@">
-<value name="IF0">
-<block type="digitalChannel_getProperty_Boolean" id="gX6k/nKF:OXNEFk2G9Y/">
-<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
-<field name="PROP">State</field>
-<data>{"IDENTIFIER":"LiftArmLimit"}</data>
-</block>
-</value>
-<statement name="DO0">
-<block type="dcMotor_setProperty_Number" id="+gP^6MT-.+V6#4avvB0[">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id=")dG.QokPUi%(d?SHvI~]">
-<field name="NUM">0.85</field>
-</shadow>
-</value>
-<next>
-<block type="controls_whileUntil" id="`mZf!E^gF^UW,~mnkNP;">
-<field name="MODE">WHILE</field>
-<value name="BOOL">
-<block type="logic_operation" id="6|GK4GCF~B=0BC6VNn`?" inline="false">
-<field name="OP">AND</field>
-<value name="A">
-<block type="linearOpMode_opModeIsActive" id="YWk+98wo+~k].L=3:;,u"/>
-</value>
-<value name="B">
-<block type="digitalChannel_getProperty_Boolean" id="Vcl!=4%k?BeG-r{;=V4F">
-<field name="IDENTIFIER">LiftArmLimitAsDigitalChannel</field>
-<field name="PROP">State</field>
-<data>{"IDENTIFIER":"LiftArmLimit"}</data>
-</block>
-</value>
-</block>
-</value>
-<statement name="DO">
-<block type="comment" id="+A+%OH%-+yWgHt4x?CO%">
-<field name="COMMENT">Optional pause after each move.</field>
-</block>
-</statement>
-<next>
-<block type="dcMotor_setProperty_Number" id="d,uPf,WdVG|=w3s9_CCN">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="-*rz/rknM7Hp9oMN?qOV">
-<field name="NUM">0</field>
-</shadow>
-</value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="L6@o=*#D_}mY*hm1:1ic">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="6Hvw/YaQX.n:iBx;FDo+">
-<field name="RUN_MODE">STOP_AND_RESET_ENCODER</field>
-</shadow>
-</value>
-<next>
-<block type="dcMotor_setProperty_RunMode" id="NQZ?FF!(U;I57z?J3c[7">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Mode</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="dcMotor_typedEnum_runMode" id="nTwYFB}[b^k}3ACO/(me">
-<field name="RUN_MODE">RUN_USING_ENCODER</field>
-</shadow>
-</value>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</next>
-</block>
-</statement>
-<next>
-<block type="controls_if" id="fU[??@pNL+uIKWgLTx$7">
-<value name="IF0">
-<block type="logic_compare" id="SMxuGOK76/;f]mzFd0Qw">
-<field name="OP">GT</field>
-<value name="A">
-<block type="dcMotor_getProperty_Number" id="0~%%9o:XGIK*31TrMJGX">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<block type="dcMotor_getProperty_Number" id="4Kx0RG?xHvIQ/0B=]o!=">
+<field name="IDENTIFIER">FRAsDcMotor</field>
 <field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
+<data>{"IDENTIFIER":"FR"}</data>
 </block>
-</value>
-<value name="B">
-<block type="variables_get" id="Qv}{DlRjKil%|9/N!6eP">
-<field name="VAR" id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</field>
-</block>
-</value>
-</block>
-</value>
-<statement name="DO0">
-<block type="dcMotor_setProperty_Number" id="}$+dAA8b3cNNZ;of*x=p">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="-x`=7z!{#!1+T!/]+ilI">
-<field name="NUM">-0.5</field>
-</shadow>
 </value>
 <next>
-<block type="controls_whileUntil" id="WGMI:y+F5L4?ZwWWwXqD">
-<field name="MODE">WHILE</field>
-<value name="BOOL">
-<block type="logic_operation" id="?,j]UmN#qugK9${n)xr%" inline="false">
-<field name="OP">AND</field>
-<value name="A">
-<block type="linearOpMode_opModeIsActive" id="0`Mh^:Z(paP3e9xdPOkC"/>
+<block type="telemetry_addNumericData_Number" id="Vz25kF%ha5]h6kf2[],[">
+<value name="KEY">
+<shadow type="text" id=";{0!sx)*.kdqQ_F(Y2`s">
+<field name="TEXT">BL</field>
+</shadow>
 </value>
-<value name="B">
-<block type="logic_compare" id="yHl`{|F{S5-su_]u)k%,">
-<field name="OP">GT</field>
-<value name="A">
-<block type="dcMotor_getProperty_Number" id="bf^yI0;u3Hy|j}Iw8O4`">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="dcMotor_getProperty_Number" id="1XtKl`[jFTDi$fms/1fj">
+<field name="IDENTIFIER">BLAsDcMotor</field>
 <field name="PROP">CurrentPosition</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
+<data>{"IDENTIFIER":"BL"}</data>
 </block>
 </value>
-<value name="B">
-<block type="variables_get" id="E}I49Nvx)J6xd;.slO-A">
-<field name="VAR" id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</field>
-</block>
-</value>
-</block>
-</value>
-</block>
-</value>
-<statement name="DO">
-<block type="comment" id="+0q9TvACPAhD18qJ*%Vv">
-<field name="COMMENT">Optional pause after each move.</field>
-</block>
-</statement>
 <next>
-<block type="dcMotor_setProperty_Number" id="wk(u~F)0x(d{;6F|TRm[">
-<field name="IDENTIFIER">LiftArmAsDcMotor</field>
-<field name="PROP">Power</field>
-<data>{"IDENTIFIER":"LiftArm"}</data>
-<value name="VALUE">
-<shadow type="math_number" id="N@.qMk+d*%Ejd#G8V4PL">
-<field name="NUM">0</field>
+<block type="telemetry_addNumericData_Number" id="U}VqoeCYM}h?BeJ{$[o-">
+<value name="KEY">
+<shadow type="text" id="@s^wwNiQS_(Ct~Y~_`:Q">
+<field name="TEXT">BR</field>
 </shadow>
 </value>
+<value name="NUMBER">
+<shadow type="math_number">
+<field name="NUM">123</field>
+</shadow>
+<block type="dcMotor_getProperty_Number" id="H[mmO,eMZ*%ipi8Xt${L">
+<field name="IDENTIFIER">BRAsDcMotor</field>
+<field name="PROP">CurrentPosition</field>
+<data>{"IDENTIFIER":"BR"}</data>
 </block>
+</value>
+<next>
+<block type="telemetry_update" id="FTX2;ysmgzSUw;(|$P:h"/>
 </next>
 </block>
 </next>
 </block>
-</statement>
+</next>
+</block>
+</next>
 </block>
 </next>
 </block>
@@ -2361,6 +2920,6 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </xml>
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <Extra>
-<OpModeMeta flavor="AUTONOMOUS" group="" autoTransition="" />
+<OpModeMeta flavor="AUTONOMOUS" group="R" autoTransition="" />
 <Enabled value="true" />
 </Extra>
