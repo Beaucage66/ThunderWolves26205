@@ -216,7 +216,7 @@
 <field name="VAR" id="qw^fZmE`9QvX[6~C4Kqj">PickupHeight</field>
 <value name="VALUE">
 <block type="math_number" id="FTGl:qOo40}MS,|=LFSs">
-<field name="NUM">-600</field>
+<field name="NUM">-550</field>
 </block>
 </value>
 <next>
@@ -521,7 +521,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="}_pAR#kxT,xORPU|3~?i">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
@@ -540,7 +540,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="bM(jcL@c7A-*;0}9?yyu">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
@@ -566,7 +566,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="DjZL7v6s6A,?T%50nFZ[">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
@@ -584,7 +584,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 <block type="procedures_callnoreturn" id="[TQPQTbPCeidC{F5Qb7W">
 <mutation name="LiftAfterSpecimenHang"/>
 <next>
-<block type="linearOpMode_sleep_Number" id="SlOLtJAD+}`5yTX.Gu7/">
+<block type="linearOpMode_sleep_Number" id="SlOLtJAD+}`5yTX.Gu7/" disabled="true">
 <value name="MILLISECONDS">
 <shadow type="math_number" id="gy7G#03bCr4K~uexa6TF">
 <field name="NUM">500</field>
@@ -598,12 +598,12 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="l^~k.gE?|SULV#z^I#um">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
 <block type="math_number" id="xmn@R`4J}Pdku$^$kAn=">
-<field name="NUM">-20</field>
+<field name="NUM">-18</field>
 </block>
 </value>
 <next>
@@ -614,19 +614,19 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="BldR6-;(L**ew`1CM1G3">
-<field name="NUM">0.35</field>
+<field name="NUM">0.5</field>
 </block>
 </value>
 <value name="ARG1">
 <block type="math_number" id="YW.iKD6#Rc{.Fjei!t{9">
-<field name="NUM">85</field>
+<field name="NUM">80</field>
 </block>
 </value>
 <next>
 <block type="procedures_callnoreturn" id="W7rXdM`a/unM(HGR_xQz">
 <mutation name="ResetLiftProcess"/>
 <next>
-<block type="linearOpMode_sleep_Number" id="#NX5gR0)o`ZAZDFx%5%j">
+<block type="linearOpMode_sleep_Number" id="#NX5gR0)o`ZAZDFx%5%j" disabled="true">
 <value name="MILLISECONDS">
 <shadow type="math_number" id="bHb7Fjt]42G)y-J}VCen">
 <field name="NUM">250</field>
@@ -640,7 +640,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="c*cGO8?1!|1^}=oq,.x?">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
@@ -663,7 +663,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="0!|q;c@?%})FtxF4-0]F">
-<field name="NUM">0.35</field>
+<field name="NUM">0.5</field>
 </block>
 </value>
 <value name="ARG1">
@@ -681,7 +681,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 <block type="linearOpMode_sleep_Number" id="unYIl0UDV~Faf5xFD!tA">
 <value name="MILLISECONDS">
 <shadow type="math_number" id="q7q9b4m-INwR{mVzy|Q8">
-<field name="NUM">500</field>
+<field name="NUM">250</field>
 </shadow>
 </value>
 <next>
@@ -695,12 +695,12 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="wd$@C6tC.ikJ$[L+O3zO">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
 <block type="math_number" id="PXUWc)}el7,3~|+Y6(BA">
-<field name="NUM">-32.75</field>
+<field name="NUM">-33.5</field>
 </block>
 </value>
 <next>
@@ -711,12 +711,12 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="9~bZXQK+Q%IqjtLb8x0I">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
 <block type="math_number" id="Ik^UX;*e)^{]s)(i)U=s">
-<field name="NUM">7</field>
+<field name="NUM">8</field>
 </block>
 </value>
 <next>
@@ -727,7 +727,7 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="/3R8zEN-U2gduNKxc7l-">
-<field name="NUM">0.35</field>
+<field name="NUM">0.5</field>
 </block>
 </value>
 <value name="ARG1">
@@ -746,12 +746,12 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </mutation>
 <value name="ARG0">
 <block type="math_number" id="BMw4$~9$3c%HSOgj],nu">
-<field name="NUM">0.5</field>
+<field name="NUM">0.7</field>
 </block>
 </value>
 <value name="ARG1">
 <block type="math_number" id="77T__;#Bp00:g12rd%8f">
-<field name="NUM">19</field>
+<field name="NUM">18</field>
 </block>
 </value>
 <next>
@@ -4168,6 +4168,6 @@ This OpMode uses the RUN_TO_POSITION mode.</comment>
 </xml>
 <?xml version='1.0' encoding='UTF-8' standalone='yes' ?>
 <Extra>
-<OpModeMeta flavor="AUTONOMOUS" group="R" autoTransition="" />
+<OpModeMeta flavor="AUTONOMOUS" group="R" autoTransition="TeamBot_Basic_2024-12-27_UseFunctions" />
 <Enabled value="true" />
 </Extra>
